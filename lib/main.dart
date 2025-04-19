@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'login.dart';
+import 'dashboard.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MedWareApp());
 }
 
-class MyApp extends StatelessWidget {
+class MedWareApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Login App',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: login(), // Set the login page as the home widget
+      home: WelcomeScreen(), // Corrected class name
     );
   }
 }
