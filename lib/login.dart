@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-class login extends StatelessWidget {
+class Login extends StatelessWidget {
+  // Renamed to 'Login'
+  const Login({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -6,6 +6,8 @@ void main() {
 }
 
 class MedWareApp extends StatelessWidget {
+  const MedWareApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

@@ -7,6 +7,8 @@ void main() {
 }
 
 class MedWareApp extends StatelessWidget {
+  const MedWareApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,6 +21,8 @@ class MedWareApp extends StatelessWidget {
 }
 
 class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,8 +60,8 @@ class WelcomeScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => login(),
-                    ), // Corrected class name
+                      builder: (context) => Login(), // Updated to 'Login'
+                    ),
                   );
                 },
                 style: ElevatedButton.styleFrom(
