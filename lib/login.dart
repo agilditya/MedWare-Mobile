@@ -64,18 +64,27 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(height: 12),
                 Text(
                   "Enter your email, username and password\nto create a new account.",
-                  style: GoogleFonts.poppins(fontSize: 14, color: Colors.grey[600]),
+                  style: GoogleFonts.poppins(
+                    fontSize: 14,
+                    color: Colors.grey[600],
+                  ),
                 ),
                 const SizedBox(height: 30),
 
                 // Email field
-                Text("Email Address *", style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
+                Text(
+                  "Email Address *",
+                  style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+                ),
                 const SizedBox(height: 6),
                 TextFormField(
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
-                  validator: (value) =>
-                  value == null || value.isEmpty ? "*This field is required" : null,
+                  validator:
+                      (value) =>
+                          value == null || value.isEmpty
+                              ? "*This field is required"
+                              : null,
                   decoration: InputDecoration(
                     hintText: "Enter your email address",
                     filled: true,
@@ -89,13 +98,19 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(height: 20),
 
                 // Password field
-                Text("Password *", style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
+                Text(
+                  "Password *",
+                  style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+                ),
                 const SizedBox(height: 6),
                 TextFormField(
                   controller: _passwordController,
                   obscureText: _obscureText,
-                  validator: (value) =>
-                  value == null || value.isEmpty ? "*This field is required" : null,
+                  validator:
+                      (value) =>
+                          value == null || value.isEmpty
+                              ? "*This field is required"
+                              : null,
                   decoration: InputDecoration(
                     hintText: "Enter your password",
                     filled: true,
@@ -122,8 +137,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(), // empty
                     TextButton(
                       onPressed: () {},
-                      child: Text("Forgot Password?",
-                          style: GoogleFonts.poppins(color: Colors.redAccent)),
+                      child: Text(
+                        "Forgot Password?",
+                        style: GoogleFonts.poppins(color: Colors.redAccent),
+                      ),
                     ),
                   ],
                 ),
@@ -159,24 +176,24 @@ class _LoginScreenState extends State<LoginScreen> {
                     Expanded(child: Divider(color: Colors.grey[400])),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: Text("or sign in with",
-                          style: GoogleFonts.poppins(color: Colors.grey)),
+                      child: Text(
+                        "or sign in with",
+                        style: GoogleFonts.poppins(color: Colors.grey),
+                      ),
                     ),
                     Expanded(child: Divider(color: Colors.grey[400])),
                   ],
                 ),
                 const SizedBox(height: 20),
 
-// Google Login
+                // Google Login
                 SizedBox(
                   width: double.infinity,
                   height: 50,
                   child: ElevatedButton.icon(
-                    onPressed: () {
-                      // TODO: Tambahkan logika login Google di sini
-                    },
+                    onPressed: () {},
                     icon: Image.asset(
-                      'assets/google.png', // Pastikan file ini ada dan sudah dicantumkan di pubspec.yaml
+                      'assets/google.png',
                       height: 24,
                       width: 24,
                     ),
