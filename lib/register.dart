@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'verifikasi.dart'; // pastikan path sesuai
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
@@ -103,7 +104,14 @@ class RegisterScreen extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => VerificationScreen(),
+                    ),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red,
                   padding: const EdgeInsets.symmetric(vertical: 16),
@@ -127,7 +135,9 @@ class RegisterScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 14, color: Colors.grey),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      // Tambahkan navigasi ke halaman login di sini
+                    },
                     child: const Text(
                       "Login",
                       style: TextStyle(
