@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'dashboard.dart';
-import 'login.dart';
-import 'register.dart';
-import 'verifikasi.dart';
 
 void main() {
   runApp(MedWareApp());
 }
 
 class MedWareApp extends StatelessWidget {
+  const MedWareApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

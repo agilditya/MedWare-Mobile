@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'forgotPassword.dart';
+import 'register.dart'; // pastikan path sesuai
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'MedWare Login',
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(textTheme: GoogleFonts.poppinsTextTheme()),
       home: LoginScreen(),
     );
   }
 }
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -33,7 +40,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _handleLogin() {
     if (_formKey.currentState!.validate()) {
-      // TODO: Tambahkan logika login
       print('Email: ${_emailController.text}');
       print('Password: ${_passwordController.text}');
     }
@@ -136,7 +142,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     const SizedBox(), // empty
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ForgotPasswordScreen(),
+                          ),
+                        );
+                      },
                       child: Text(
                         "Forgot Password?",
                         style: GoogleFonts.poppins(color: Colors.redAccent),
@@ -222,9 +235,23 @@ class _LoginScreenState extends State<LoginScreen> {
                       text: "Don’t have an account? ",
                       style: GoogleFonts.poppins(),
                       children: [
-                        TextSpan(
-                          text: "Register",
-                          style: GoogleFonts.poppins(color: Colors.redAccent),
+                        WidgetSpan(
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => RegisterScreen(),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              "Register",
+                              style: GoogleFonts.poppins(
+                                color: Colors.redAccent,
+                              ),
+                            ),
+                          ),
                         ),
                       ],
                     ),
