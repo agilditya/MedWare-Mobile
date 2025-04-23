@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(
@@ -91,6 +92,29 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       onPressed: () {
                         String code = _codeController.map((c) => c.text).join();
                         print("Kode verifikasi: $code");
+
+                        if (code == '000000') {
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: Text("Verifikasi Berhasil"),
+                              content:
+                                  Text("Kode verifikasi berhasil diverifikasi."),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text("OK"),
+                                ),
+                              ],
+                            ),
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text("Kode verifikasi salah")),
+                          );
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFFD14C4C),
