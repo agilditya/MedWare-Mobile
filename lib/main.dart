@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'detail.dart'; // ganti sesuai nama file dan lokasi file kamu
+import 'addproduct.dart'; // Ganti dengan path file kamu
 
 void main() {
-  runApp(const MedWareApp());
+  runApp(const MyApp());
 }
 
-class MedWareApp extends StatelessWidget {
-  const MedWareApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'MedWare',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.red, fontFamily: 'Poppins'),
+      title: 'Flutter Demo',
+      home: const AddProductScreen (), // GANTI SCREEN YANG MAU DILIAT
     );
   }
 }
