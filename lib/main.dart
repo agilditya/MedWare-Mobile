@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'dashboard.dart';
+import 'detail.dart'; // ganti sesuai nama file dan lokasi file kamu
 
 void main() {
-  runApp(MedWareApp());
+  runApp(const MedWareApp());
 }
 
 class MedWareApp extends StatelessWidget {
@@ -14,7 +14,6 @@ class MedWareApp extends StatelessWidget {
       title: 'MedWare',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.red, fontFamily: 'Poppins'),
-      home: DashboardScreen(),
     );
   }
 }
