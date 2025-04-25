@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Admin/home.dart'; // Ganti dengan path file kamu
+import 'User/LogoutStaff.dart'; // Import the LogoutStaff screen
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: MedwareHomePage(), // GANTI SCREEN YANG MAU DILIAT
+      home: LogoutStaffPage(), // Set the initial screen to LogoutStaffPage
     );
   }
 }
