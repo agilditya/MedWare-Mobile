@@ -1,23 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'forgotPassword.dart';
-import 'register.dart'; // pastikan path sesuai
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'MedWare Login',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(textTheme: GoogleFonts.poppinsTextTheme()),
-      home: LoginScreen(),
-    );
-  }
-}
+import 'register.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -58,7 +42,13 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 30),
-                Text("Welcome to", style: GoogleFonts.poppins(fontSize: 24)),
+                Text(
+                  "Welcome to",
+                  style: GoogleFonts.poppins(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold, // Added bold styling
+                  ),
+                ),
                 Text(
                   "MedWare",
                   style: GoogleFonts.poppins(
@@ -69,20 +59,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  "Enter your email, username and password\nto create a new account.",
+                  "Enter your email, username and password to create \na new account.",
                   style: GoogleFonts.poppins(
                     fontSize: 14,
                     color: Colors.grey[600],
                   ),
                 ),
                 const SizedBox(height: 30),
-
-                // Email field
-                Text(
-                  "Email Address *",
-                  style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
-                ),
-                const SizedBox(height: 6),
                 TextFormField(
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
@@ -92,23 +75,27 @@ class _LoginScreenState extends State<LoginScreen> {
                               ? "*This field is required"
                               : null,
                   decoration: InputDecoration(
-                    hintText: "Enter your email address",
-                    filled: true,
-                    fillColor: Colors.red[50],
+                    labelText: 'Email Address',
+                    labelStyle: GoogleFonts.poppins(
+                      color:
+                          Colors
+                              .black54, // Set label color to black before focus
+                    ),
+                    hintText: 'Enter Email Address',
+                    hintStyle: GoogleFonts.poppins(),
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.redAccent),
+                      borderRadius: BorderRadius.circular(8.0),
+                      borderSide: BorderSide(color: Colors.black54),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                      borderSide: BorderSide(
+                        color: Colors.black54, // Set focus color to black
+                      ),
                     ),
                   ),
                 ),
                 const SizedBox(height: 20),
-
-                // Password field
-                Text(
-                  "Password *",
-                  style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
-                ),
-                const SizedBox(height: 6),
                 TextFormField(
                   controller: _passwordController,
                   obscureText: _obscureText,
@@ -118,9 +105,24 @@ class _LoginScreenState extends State<LoginScreen> {
                               ? "*This field is required"
                               : null,
                   decoration: InputDecoration(
-                    hintText: "Enter your password",
-                    filled: true,
-                    fillColor: Colors.red[50],
+                    labelText: 'Password',
+                    labelStyle: GoogleFonts.poppins(
+                      color:
+                          Colors
+                              .black54, // Set label color to black before focus
+                    ),
+                    hintText: 'Enter your password',
+                    hintStyle: GoogleFonts.poppins(),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                      borderSide: BorderSide(color: Colors.black54),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                      borderSide: BorderSide(
+                        color: Colors.black54, // Set focus color to red
+                      ),
+                    ),
                     suffixIcon: IconButton(
                       icon: Icon(
                         _obscureText ? Icons.visibility_off : Icons.visibility,
@@ -128,19 +130,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       onPressed: _togglePassword,
                     ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.redAccent),
-                    ),
                   ),
                 ),
-
-                // Forgot Password
                 const SizedBox(height: 8),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const SizedBox(), // empty
+                    const SizedBox(),
                     TextButton(
                       onPressed: () {
                         Navigator.push(
@@ -158,8 +154,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
                 const SizedBox(height: 10),
-
-                // Login Button
                 SizedBox(
                   width: double.infinity,
                   height: 50,
@@ -182,8 +176,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 const SizedBox(height: 20),
-
-                // Divider
                 Row(
                   children: [
                     Expanded(child: Divider(color: Colors.grey[400])),
@@ -198,8 +190,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
                 const SizedBox(height: 20),
-
-                // Google Login
                 SizedBox(
                   width: double.infinity,
                   height: 50,
@@ -227,8 +217,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-
-                // Register
                 Center(
                   child: Text.rich(
                     TextSpan(

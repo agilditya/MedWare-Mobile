@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'verifikasi.dart'; // pastikan path sesuai
 import 'login.dart'; // pastikan path sesuai
+import 'package:google_fonts/google_fonts.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
@@ -21,42 +22,46 @@ class RegisterScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 80),
-              const Text(
+              Text(
                 "Welcome to",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: GoogleFonts.poppins(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              const Text(
+              Text(
                 "MedWare",
-                style: TextStyle(
+                style: GoogleFonts.poppins(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
                   color: Colors.red,
                 ),
               ),
               const SizedBox(height: 16),
-              const Text(
+              Text(
                 "Enter your email, username and password to create a new account.",
-                style: TextStyle(fontSize: 16, color: Colors.grey),
+                style: GoogleFonts.poppins(fontSize: 16, color: Colors.black54),
               ),
-              const SizedBox(height: 32),
-              const Text(
+              const SizedBox(height: 40),
+              Text(
                 "Username",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: GoogleFonts.poppins(fontSize: 14, color: Colors.black54),
               ),
               const SizedBox(height: 8),
               TextFormField(
                 controller: usernameController,
                 decoration: InputDecoration(
+                  labelText: 'Username',
+                  labelStyle: GoogleFonts.poppins(color: Colors.black54),
                   hintText: "Enter Username",
-                  filled: true,
-                  fillColor: Colors.red.shade50,
+                  hintStyle: GoogleFonts.poppins(),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Colors.red.shade200),
+                    borderRadius: BorderRadius.circular(8.0),
+                    borderSide: const BorderSide(color: Colors.black54),
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Colors.red.shade200),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                    borderSide: const BorderSide(color: Colors.black54),
                   ),
                 ),
                 validator: (value) {
@@ -66,25 +71,26 @@ class RegisterScreen extends StatelessWidget {
                   return null;
                 },
               ),
-              const SizedBox(height: 16),
-              const Text(
+              const SizedBox(height: 70), // Updated spacing
+              Text(
                 "Email Address",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: GoogleFonts.poppins(fontSize: 14, color: Colors.black54),
               ),
               const SizedBox(height: 8),
               TextFormField(
                 controller: emailController,
                 decoration: InputDecoration(
+                  labelText: 'Email Address',
+                  labelStyle: GoogleFonts.poppins(color: Colors.black54),
                   hintText: "Enter Email Address",
-                  filled: true,
-                  fillColor: Colors.red.shade50,
+                  hintStyle: GoogleFonts.poppins(),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Colors.red.shade200),
+                    borderRadius: BorderRadius.circular(8.0),
+                    borderSide: const BorderSide(color: Colors.black54),
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Colors.red.shade200),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                    borderSide: const BorderSide(color: Colors.black54),
                   ),
                 ),
                 validator: (value) {
@@ -94,27 +100,28 @@ class RegisterScreen extends StatelessWidget {
                   return null;
                 },
               ),
-              const SizedBox(height: 16),
-              const Text(
+              const SizedBox(height: 70), // Updated spacing
+              Text(
                 "Password",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: GoogleFonts.poppins(fontSize: 14, color: Colors.black54),
               ),
               const SizedBox(height: 8),
               TextFormField(
                 controller: passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
+                  labelText: 'Password',
+                  labelStyle: GoogleFonts.poppins(color: Colors.black54),
                   hintText: "Enter Password",
-                  filled: true,
-                  fillColor: Colors.red.shade50,
+                  hintStyle: GoogleFonts.poppins(),
                   suffixIcon: const Icon(Icons.visibility),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Colors.red.shade200),
+                    borderRadius: BorderRadius.circular(8.0),
+                    borderSide: const BorderSide(color: Colors.black54),
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(color: Colors.red.shade200),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                    borderSide: const BorderSide(color: Colors.black54),
                   ),
                 ),
                 validator: (value) {
@@ -125,9 +132,9 @@ class RegisterScreen extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 8),
-              const Text(
+              Text(
                 "Use 8 or more characters with a mix of letters and numbers",
-                style: TextStyle(fontSize: 12, color: Colors.grey),
+                style: GoogleFonts.poppins(fontSize: 12, color: Colors.black54),
               ),
               const SizedBox(height: 32),
               SizedBox(
@@ -165,9 +172,12 @@ class RegisterScreen extends StatelessWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text(
-                      "Already have account ? ",
-                      style: TextStyle(fontSize: 14, color: Colors.grey),
+                    Text(
+                      "Already have an account? ",
+                      style: GoogleFonts.poppins(
+                        fontSize: 14,
+                        color: Colors.grey,
+                      ),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -178,9 +188,9 @@ class RegisterScreen extends StatelessWidget {
                           ),
                         );
                       },
-                      child: const Text(
+                      child: Text(
                         "Login",
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                           fontSize: 14,
                           color: Colors.red,
                           fontWeight: FontWeight.bold,

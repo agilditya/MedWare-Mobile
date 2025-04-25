@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'register.dart'; // Import the Admin home screen
 import 'package:tubes/Admin/medlog.dart';
-import 'Admin/medlog.dart'; // Ganti dengan path file kamu
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: MedLogPage(), // GANTI SCREEN YANG MAU DILIAT
+      home: RegisterScreen(), 
     );
   }
 }
