@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Admin/homeAdmin.dart'; // Ganti dengan path file kamu
+import 'Admin/homeAdmin.dart'; // Import the Admin home screen
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: LogoutStaffPage(), // Set the initial screen to LogoutStaffPage
+      home: MedwareApp(), // Set the initial screen to HomeAdminPage
     );
   }
 }
