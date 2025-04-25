@@ -68,6 +68,13 @@ flutter:
     - assets/email_verification.png
     - assets/forgotPass.png
     - assets/amoxsan.png
+    - assets/barang.png
+    - assets/add.png
+    - assets/view.png
+    - assets/log.png
+    - assets/buffect.png
+    - assets/sanmol.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

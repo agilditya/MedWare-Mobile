@@ -46,21 +46,51 @@ class MedwareHomePage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 16),
-            GridView.count(
-              crossAxisCount: 2,
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
+            Column(
               children: [
-                dashboardTile(
-                  "53",
-                  "Products are in Your Ware",
-                  Colors.redAccent,
+                Row(
+                  children: [
+                    Expanded(
+                      child: dashboardTile(
+                        "53",
+                        "Products are in Your Ware",
+                        Colors.redAccent,
+                        'assets/barang.png',
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Expanded(
+                      child: dashboardTile(
+                        "ADD",
+                        "Add new products",
+                        Colors.blueAccent,
+                        'assets/add.png',
+                      ),
+                    ),
+                  ],
                 ),
-                dashboardTile("ADD", "Add new products", Colors.blueAccent),
-                dashboardTile("VIEW", "View all products", Colors.purple),
-                dashboardTile("LOG", "view activity history", Colors.green),
+                SizedBox(height: 10),
+                Row(
+                  children: [
+                    Expanded(
+                      child: dashboardTile(
+                        "VIEW",
+                        "View all products",
+                        Colors.purple,
+                        'assets/view.png',
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Expanded(
+                      child: dashboardTile(
+                        "LOG",
+                        "view activity history",
+                        Colors.green,
+                        'assets/log.png',
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
             SizedBox(height: 20),
@@ -71,9 +101,21 @@ class MedwareHomePage extends StatelessWidget {
             SizedBox(height: 10),
             Row(
               children: [
-                productCard("Bufect", "10 - 01 - 2024"),
+                Expanded(
+                  child: productCard(
+                    "Bufect",
+                    "10 - 01 - 2024",
+                    'assets/buffect.png',
+                  ),
+                ),
                 SizedBox(width: 10),
-                productCard("Bufect", "10 - 01 - 2024"),
+                Expanded(
+                  child: productCard(
+                    "Sanmol",
+                    "10 - 01 - 2024",
+                    'assets/sanmol.png',
+                  ),
+                ),
               ],
             ),
           ],
@@ -96,7 +138,12 @@ class MedwareHomePage extends StatelessWidget {
     );
   }
 
-  Widget dashboardTile(String title, String subtitle, Color color) {
+  Widget dashboardTile(
+    String title,
+    String subtitle,
+    Color color,
+    String imagePath,
+  ) {
     return Container(
       decoration: BoxDecoration(
         color: color.withOpacity(0.9),
@@ -106,6 +153,16 @@ class MedwareHomePage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Align(
+            alignment: Alignment.topRight,
+            child: Image.asset(
+              imagePath,
+              height: 130, // Perbesar gambar dari 40 ke 60
+              width: 130,
+              fit: BoxFit.contain,
+            ),
+          ),
+          SizedBox(height: 8),
           Text(
             title,
             style: TextStyle(
@@ -121,31 +178,30 @@ class MedwareHomePage extends StatelessWidget {
     );
   }
 
-  Widget productCard(String productName, String date) {
-    return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          color: Colors.grey[100],
-        ),
-        padding: EdgeInsets.all(8),
-        child: Column(
-          children: [
-            Container(
-              height: 100,
+  Widget productCard(String productName, String date, String imagePath) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        color: Colors.grey[100],
+      ),
+      padding: EdgeInsets.all(8),
+      child: Column(
+        children: [
+          Container(
+            height: 100,
+            decoration: BoxDecoration(
               color: Colors.white,
-              child: Center(
-                child: Icon(Icons.image, size: 50, color: Colors.grey),
-              ),
+              borderRadius: BorderRadius.circular(8),
             ),
-            SizedBox(height: 8),
-            Text(productName, style: TextStyle(fontWeight: FontWeight.bold)),
-            Text(
-              'Added: $date',
-              style: TextStyle(color: Colors.grey, fontSize: 12),
-            ),
-          ],
-        ),
+            child: Center(child: Image.asset(imagePath, fit: BoxFit.contain)),
+          ),
+          SizedBox(height: 8),
+          Text(productName, style: TextStyle(fontWeight: FontWeight.bold)),
+          Text(
+            'Added: $date',
+            style: TextStyle(color: Colors.grey, fontSize: 12),
+          ),
+        ],
       ),
     );
   }
