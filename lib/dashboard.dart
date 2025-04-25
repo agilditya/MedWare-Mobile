@@ -9,23 +9,42 @@ class DashboardScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
-          // Tambahkan ini agar tidak overflow
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          child: Container(
+            margin: const EdgeInsets.only(
+              top: 40,
+              left: 25,
+              right: 25,
+              bottom: 0,
+            ),
+            padding: const EdgeInsets.only(
+              top: 0,
+              left: 20,
+              right: 20,
+              bottom: 0,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 20),
-                Text(
-                  'MedWare',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.red.shade400,
+                Container(
+                  margin: const EdgeInsets.only(
+                    top: 0,
+                    left: 20,
+                    right: 20,
+                    bottom: 0,
                   ),
+                  child: Image.asset('assets/medware.png', height: 100),
                 ),
-                const SizedBox(height: 20),
-                Image.asset('assets/dashboard.png', height: 350),
+                const SizedBox(height: 10),
+                Container(
+                  margin: const EdgeInsets.only(
+                    top: 10,
+                    left: 25,
+                    right: 25,
+                    bottom: 10,
+                  ),
+                  child: Image.asset('assets/dashboard.png', height: 350),
+                ),
                 const SizedBox(height: 20),
                 Text.rich(
                   TextSpan(
@@ -35,6 +54,7 @@ class DashboardScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
+                          fontFamily: 'Poppins',
                           color: Colors.red.shade400,
                         ),
                       ),
@@ -43,6 +63,7 @@ class DashboardScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
+                          fontFamily: 'Poppins',
                           color: Colors.red.shade400,
                         ),
                       ),
@@ -54,7 +75,11 @@ class DashboardScreen extends StatelessWidget {
                 Text(
                   'Serves as a digital ledger for keeping track of all medical supplies, from medications to medical equipment.',
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 14, color: Colors.red.shade300),
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontFamily: 'Poppins',
+                    color: Colors.red.shade300,
+                  ),
                 ),
                 const SizedBox(height: 100),
                 ElevatedButton(
@@ -73,7 +98,11 @@ class DashboardScreen extends StatelessWidget {
                   ),
                   child: Text(
                     'Login',
-                    style: TextStyle(fontSize: 16, color: Colors.white),
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: 'Poppins',
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 12),
@@ -92,7 +121,10 @@ class DashboardScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  child: Text('Sign Up', style: TextStyle(fontSize: 16)),
+                  child: Text(
+                    'Sign Up',
+                    style: TextStyle(fontSize: 16, fontFamily: 'Poppins'),
+                  ),
                 ),
                 const SizedBox(height: 20),
               ],
