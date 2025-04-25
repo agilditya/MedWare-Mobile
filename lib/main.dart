@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'Admin/homeAdmin.dart'; // Ganti dengan path file kamu
+import 'package:tubes/Admin/medlog.dart';
+import 'Admin/medlog.dart'; // Ganti dengan path file kamu
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: LogoutStaffPage(), // Set the initial screen to LogoutStaffPage
+      home: MedLogPage(), // GANTI SCREEN YANG MAU DILIAT
     );
   }
 }

@@ -74,6 +74,12 @@ flutter:
     - assets/log.png
     - assets/buffect.png
     - assets/sanmol.png
+    - assets/home_navbar.png
+    - assets/search_navbar.png
+    - assets/add_navbar.png
+    - assets/log_navbar.png
+    - assets/profile_navbar.png
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
