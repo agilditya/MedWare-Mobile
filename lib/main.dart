@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: MedwareHomePage(), // GANTI SCREEN YANG MAU DILIAT
+      home: LogoutStaffPage(), // Set the initial screen to LogoutStaffPage
     );
   }
 }
