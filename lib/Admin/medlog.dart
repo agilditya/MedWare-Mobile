@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MedLogPage()));
-}
-
-class MedLogPage extends StatelessWidget {
+class MedLog extends StatelessWidget {
   final List<Map<String, String>> logs = [
     {
       'type': 'Stock out',

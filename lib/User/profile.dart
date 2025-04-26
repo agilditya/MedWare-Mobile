@@ -8,7 +8,9 @@ class LogoutStaffPage extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
           title: const Text(
             "Log out of staff?",
             style: TextStyle(fontWeight: FontWeight.bold),
@@ -16,23 +18,32 @@ class LogoutStaffPage extends StatelessWidget {
           content: const Text("You will be logged out of your account"),
           actions: <Widget>[
             TextButton(
-              child: const Text("Cancel", style: TextStyle(color: Colors.white)),
+              child: const Text(
+                "Cancel",
+                style: TextStyle(color: Colors.white),
+              ),
               style: TextButton.styleFrom(
                 backgroundColor: Color(0xFFD9534F),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
               ),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: const Text("Log Out", style: TextStyle(color: Colors.white)),
+              child: const Text(
+                "Log Out",
+                style: TextStyle(color: Colors.white),
+              ),
               style: TextButton.styleFrom(
                 backgroundColor: Color(0xFFD9534F),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
               ),
               onPressed: () {
-                // TODO: Tambahkan logika logout di sini
                 Navigator.of(context).pop(); // Tutup dialog
               },
             ),
@@ -78,17 +89,36 @@ class LogoutStaffPage extends StatelessWidget {
             padding: const EdgeInsets.only(top: 60, bottom: 20),
             child: Column(
               children: [
-                const Text("Profile", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                const Text(
+                  "Profile",
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
                 const SizedBox(height: 10),
-                const CircleAvatar(radius: 50, backgroundColor: Colors.grey),
+                const CircleAvatar(
+                  radius: 50,
+                  backgroundImage: AssetImage('assets/apotik_anugerah.png'),
+                ),
                 const SizedBox(height: 10),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 6,
+                  ),
                   decoration: BoxDecoration(
-                    color: Colors.red[700],
+                    color: Color(0xFF53BF63), // Corrected color value
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: const Text("Staff", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                  child: const Text(
+                    "Staff",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -98,13 +128,18 @@ class LogoutStaffPage extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 24),
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Text("Setting Account", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              child: Text(
+                "Setting Account",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
             ),
           ),
           const SizedBox(height: 20),
           Card(
             margin: const EdgeInsets.symmetric(horizontal: 24),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
             elevation: 2,
             child: Column(
               children: [
@@ -135,13 +170,22 @@ class LogoutStaffPage extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () => _showLogoutDialog(context),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                  side: BorderSide.none,
-                  shadowColor: Colors.black.withOpacity(0.1),
+                  backgroundColor: Colors.redAccent,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  side: BorderSide(color: Colors.red, width: 1), // Added border
+                  shadowColor: Colors.white.withOpacity(0.1),
                   elevation: 4,
                 ),
-                child: const Text("Log Out", style: TextStyle(color: Colors.black87, fontSize: 16)),
+                child: const Text(
+                  "Log Out",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold, // Made text bold
+                  ),
+                ),
               ),
             ),
           ),
@@ -155,17 +199,14 @@ class LogoutStaffPage extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(
-          icon,
-          color: isActive ? Colors.redAccent : Colors.black,
-        ),
+        Icon(icon, color: isActive ? Colors.redAccent : Colors.black),
         Text(
           label,
           style: TextStyle(
             color: isActive ? Colors.redAccent : Colors.black,
             fontSize: 12,
           ),
-        )
+        ),
       ],
     );
   }

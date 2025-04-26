@@ -79,8 +79,7 @@ flutter:
     - assets/add_navbar.png
     - assets/log_navbar.png
     - assets/profile_navbar.png
-
-
+    - assets/apotik_anugerah.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
