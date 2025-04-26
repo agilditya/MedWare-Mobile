@@ -38,7 +38,21 @@ class ForgotPasswordScreen extends StatelessWidget {
             SizedBox(height: 24),
             Image.asset('assets/forgotPass.png', height: 350),
             SizedBox(height: 24),
-            TextField(
+            Align(
+              alignment: Alignment.centerLeft, // Align to the left
+              child: Text(
+                "Email Address",
+                style: GoogleFonts.poppins(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            const SizedBox(height: 8),
+            TextFormField(
+              keyboardType:
+                  TextInputType.emailAddress, // Tambahkan keyboardType
+              autofocus: true, // Automatically focus the input field
               decoration: InputDecoration(
                 labelText: 'Email Address',
                 labelStyle: GoogleFonts.poppins(
@@ -55,7 +69,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8.0),
                   borderSide: BorderSide(
                     color: Colors.grey,
-                  ), // Set focus color to red
+                  ), // Set focus color to grey
                 ),
               ),
             ),
@@ -78,7 +92,19 @@ class ForgotPasswordScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 16),
-            Text('or', style: GoogleFonts.poppins(color: Colors.black54)),
+            Row(
+              children: [
+                Expanded(child: Divider(color: Colors.grey[400])),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Text(
+                    'or',
+                    style: GoogleFonts.poppins(color: Colors.black54),
+                  ),
+                ),
+                Expanded(child: Divider(color: Colors.grey[400])),
+              ],
+            ),
             SizedBox(height: 16),
             SizedBox(
               width: double.infinity,

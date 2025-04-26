@@ -14,6 +14,7 @@ class MedWareApp extends StatelessWidget {
       title: 'MedWare',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.red, fontFamily: 'Poppins'),
+      title: 'Flutter Demo',
       home: DashboardScreen(),
     );
   }

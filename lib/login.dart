@@ -89,28 +89,36 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  "Enter your email, username and password to create \na new account.",
+                  "Enter your email, username and password to create a new account.",
                   style: GoogleFonts.poppins(
                     fontSize: 14,
                     color: Colors.grey[600],
                   ),
                 ),
                 const SizedBox(height: 30),
+                Text(
+                  "Email Address",
+                  style: GoogleFonts.poppins(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
                 TextFormField(
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
-                  validator:
-                      (value) =>
-                          value == null || value.isEmpty
-                              ? "*This field is required"
-                              : null,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "*This field is required";
+                    }
+                    if (!value.contains('@')) {
+                      return 'Please enter your email address with "@"';
+                    }
+                    return null;
+                  },
                   decoration: InputDecoration(
                     labelText: 'Email Address',
-                    labelStyle: GoogleFonts.poppins(
-                      color:
-                          Colors
-                              .black54, // Set label color to black before focus
-                    ),
+                    labelStyle: GoogleFonts.poppins(color: Colors.black54),
                     hintText: 'Enter Email Address',
                     hintStyle: GoogleFonts.poppins(),
                     border: OutlineInputBorder(
@@ -119,13 +127,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
-                      borderSide: BorderSide(
-                        color: Colors.black54, // Set focus color to black
-                      ),
+                      borderSide: BorderSide(color: Colors.black54),
                     ),
                   ),
                 ),
                 const SizedBox(height: 20),
+                Text(
+                  "Password",
+                  style: GoogleFonts.poppins(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
                 TextFormField(
                   controller: _passwordController,
                   obscureText: _obscureText,
@@ -136,11 +150,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               : null,
                   decoration: InputDecoration(
                     labelText: 'Password',
-                    labelStyle: GoogleFonts.poppins(
-                      color:
-                          Colors
-                              .black54, // Set label color to black before focus
-                    ),
+                    labelStyle: GoogleFonts.poppins(color: Colors.black54),
                     hintText: 'Enter your password',
                     hintStyle: GoogleFonts.poppins(),
                     border: OutlineInputBorder(
@@ -149,9 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
-                      borderSide: BorderSide(
-                        color: Colors.black54, // Set focus color to red
-                      ),
+                      borderSide: BorderSide(color: Colors.black54),
                     ),
                     suffixIcon: IconButton(
                       icon: Icon(

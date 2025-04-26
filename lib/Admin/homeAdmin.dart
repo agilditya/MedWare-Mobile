@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'addproduct.dart'; 
 import 'medlog.dart';
 
-void main() {
-  runApp(MedwareApp());
-}
-
 class MedwareApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -17,6 +13,8 @@ class MedwareApp extends StatelessWidget {
 }
 
 class MedwareHomeAdminPage extends StatelessWidget {
+
+class MedwareHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
