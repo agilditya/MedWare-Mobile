@@ -33,7 +33,7 @@ class DashboardScreen extends StatelessWidget {
                     right: 20,
                     bottom: 0,
                   ),
-                  child: Image.asset('assets/medware.png', height: 100),
+                  child: Image.asset('assets/MedWare.png', height: 100),
                 ),
                 const SizedBox(height: 10),
                 Container(

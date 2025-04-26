@@ -142,10 +142,11 @@ class RegisterScreen extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
+                      String role = 'user';
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => VerificationScreen(),
+                          builder: (context) => VerificationScreen(role: role),
                         ),
                       );
                     }
