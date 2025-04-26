@@ -19,19 +19,49 @@ class MedwareHomeUserPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
         toolbarHeight: 80,
-        title: Text(
-          'Medware',
-          style: TextStyle(
-            color: Colors.redAccent,
-            fontWeight: FontWeight.bold,
-            fontSize: 28,
-          ),
+        automaticallyImplyLeading: false,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text(
+              'ApotekSejahtera21',
+              style: TextStyle(
+                color: Colors.redAccent,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+            SizedBox(width: 8),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+              decoration: BoxDecoration(
+                color: Colors.green,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Text(
+                'Staff',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                ),
+              ),
+            ),
+            SizedBox(width: 8),
+            CircleAvatar(
+              radius: 20,
+              backgroundColor: Colors.orange,
+              backgroundImage: AssetImage('assets/logo_apotek.png'),
+            ),
+          ],
         ),
       ),
+
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
@@ -61,35 +91,21 @@ class MedwareHomeUserPage extends StatelessWidget {
                     SizedBox(width: 10),
                     Expanded(
                       child: dashboardTile(
-                        "ADD",
-                        "Add new products",
-                        Colors.blueAccent,
-                        'assets/add.png',
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10),
-                Row(
-                  children: [
-                    Expanded(
-                      child: dashboardTile(
                         "VIEW",
                         "View all products",
                         Colors.purple,
                         'assets/view.png',
                       ),
                     ),
-                    SizedBox(width: 10),
-                    Expanded(
-                      child: dashboardTile(
-                        "LOG",
-                        "view activity history",
-                        Colors.green,
-                        'assets/log.png',
-                      ),
-                    ),
                   ],
+                ),
+                SizedBox(height: 10),
+                // Tile PAY sendiri
+                dashboardTile(
+                  "PAY",
+                  "Payment for customers",
+                  Colors.green,
+                  'assets/pay.png',
                 ),
               ],
             ),
@@ -121,19 +137,36 @@ class MedwareHomeUserPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.redAccent,
-        unselectedItemColor: Colors.grey,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add_circle, size: 40),
-            label: "",
+
+      floatingActionButton: Container(
+        height: 65,
+        width: 65,
+        child: FloatingActionButton(
+          onPressed: () {},
+          backgroundColor: Colors.redAccent,
+          shape: CircleBorder(),
+          child: Image.asset('assets/add_navbar.png', height: 32, width: 32),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
+        shape: CircularNotchedRectangle(),
+        notchMargin: 8.0,
+        child: SizedBox(
+          height: 70,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _customNavItem('assets/home_navbar.png', 'Home', true),
+              _customNavItem('assets/search_navbar.png', 'Search', false),
+              SizedBox(width: 40),
+              _customNavItem('assets/log_navbar.png', 'Log', false),
+              _customNavItem('assets/profile_navbar.png', 'Profile', false),
+            ],
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.list_alt), label: "Log"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-        ],
+        ),
       ),
     );
   }
@@ -145,6 +178,7 @@ class MedwareHomeUserPage extends StatelessWidget {
     String imagePath,
   ) {
     return Container(
+      margin: EdgeInsets.only(bottom: 10), // Jarak antar tile
       decoration: BoxDecoration(
         color: color.withOpacity(0.9),
         borderRadius: BorderRadius.circular(16),
@@ -157,7 +191,7 @@ class MedwareHomeUserPage extends StatelessWidget {
             alignment: Alignment.topRight,
             child: Image.asset(
               imagePath,
-              height: 130, // Perbesar gambar dari 40 ke 60
+              height: 130,
               width: 130,
               fit: BoxFit.contain,
             ),
@@ -203,6 +237,31 @@ class MedwareHomeUserPage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _customNavItem(String assetPath, String label, bool isActive) {
+    double iconHeight = label == 'Log' ? 30 : 24;
+    double iconWidth = label == 'Log' ? 30 : 24;
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image.asset(
+          assetPath,
+          height: iconHeight,
+          width: iconWidth,
+          color: isActive ? Colors.redAccent : Colors.black,
+        ),
+        Text(
+          label,
+          style: TextStyle(
+            color: isActive ? Colors.redAccent : Colors.black,
+            fontSize: 12,
+          ),
+        ),
+      ],
     );
   }
 }
