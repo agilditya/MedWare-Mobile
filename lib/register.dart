@@ -87,31 +87,6 @@ class RegisterScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your password';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 8),
-              Text(
-                "Use 8 or more characters with a mix of letters and numbers",
-                style: GoogleFonts.poppins(fontSize: 12, color: Colors.black54),
-              ),
-              const SizedBox(height: 32),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      String role = 'user';
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => VerificationScreen(role: role),
-                        ),
-                      );
                 const SizedBox(height: 8),
                 TextFormField(
                   controller: emailController,
