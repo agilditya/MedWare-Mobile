@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'forgotPassword.dart';
 import 'register.dart';
-import 'Admin/homeAdmin.dart';
-import 'User/homeUser.dart';
-import 'verifikasi.dart';
-
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -28,36 +24,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _handleLogin() {
     if (_formKey.currentState!.validate()) {
-      final email = _emailController.text.trim();
-      final password = _passwordController.text.trim();
-
-      if (email == 'admin@medware.com' && password == 'admin123') {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => VerificationScreen(role: 'admin'), // kirim role admin
-          ),
-        );
-      } else if (email == 'user@medware.com' && password == 'user123') {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => VerificationScreen(role: 'user'), // kirim role user
-          ),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Invalid email or password.'),
-            backgroundColor: Colors.redAccent,
-          ),
-        );
-      }
+      print('Email: ${_emailController.text}');
+      print('Password: ${_passwordController.text}');
     }
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {
