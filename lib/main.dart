@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dashboard.dart';
+import 'User/cart.dart'; 
 
 void main() {
   runApp(MedWareApp());
@@ -14,7 +14,7 @@ class MedWareApp extends StatelessWidget {
       title: 'MedWare',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.red, fontFamily: 'Poppins'),
-      home: DashboardScreen(),
+      home: PaymentPage(),
     );
   }
 }
