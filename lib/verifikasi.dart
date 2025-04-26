@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 void main() {
   runApp(
@@ -17,6 +16,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
     6,
     (index) => TextEditingController(),
   );
+  bool _showError = false;
 
   @override
   Widget build(BuildContext context) {
@@ -79,38 +79,42 @@ class _VerificationScreenState extends State<VerificationScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "*This field is required",
-                        style: TextStyle(color: Colors.red),
+                    if (_showError)
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "*This field is required",
+                          style: TextStyle(color: Colors.red),
+                        ),
                       ),
-                    ),
                     SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () {
                         String code = _codeController.map((c) => c.text).join();
-                        print("Kode verifikasi: $code");
+                        setState(() {
+                          _showError = code.isEmpty;
+                        });
 
-                        if (code == '000000') {
+                        if (code.isNotEmpty && code == '000000') {
                           showDialog(
                             context: context,
-                            builder: (context) => AlertDialog(
-                              title: Text("Verifikasi Berhasil"),
-                              content:
-                                  Text("Kode verifikasi berhasil diverifikasi."),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: Text("OK"),
+                            builder:
+                                (context) => AlertDialog(
+                                  title: Text("Verifikasi Berhasil"),
+                                  content: Text(
+                                    "Kode verifikasi berhasil diverifikasi.",
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text("OK"),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
                           );
-                        } else {
+                        } else if (code.isNotEmpty) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text("Kode verifikasi salah")),
                           );

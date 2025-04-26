@@ -1,19 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MedwareApp());
-}
-
-class MedwareApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MedwareHomePage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
 class MedwareHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
