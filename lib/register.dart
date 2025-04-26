@@ -42,7 +42,7 @@ class RegisterScreen extends StatelessWidget {
                 "Enter your email, username and password to create a new account.",
                 style: GoogleFonts.poppins(fontSize: 16, color: Colors.black54),
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 30),
               Text(
                 "Username",
                 style: GoogleFonts.poppins(fontSize: 14, color: Colors.black54),
@@ -71,7 +71,7 @@ class RegisterScreen extends StatelessWidget {
                   return null;
                 },
               ),
-              const SizedBox(height: 70), // Updated spacing
+              const SizedBox(height: 30), // Updated spacing
               Text(
                 "Email Address",
                 style: GoogleFonts.poppins(fontSize: 14, color: Colors.black54),
@@ -100,7 +100,7 @@ class RegisterScreen extends StatelessWidget {
                   return null;
                 },
               ),
-              const SizedBox(height: 70), // Updated spacing
+              const SizedBox(height: 30), // Updated spacing
               Text(
                 "Password",
                 style: GoogleFonts.poppins(fontSize: 14, color: Colors.black54),
