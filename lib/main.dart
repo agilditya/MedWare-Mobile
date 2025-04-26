@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'register.dart'; // Import the Admin home screen
+import 'dashboard.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: RegisterScreen(),
+      home: DashboardScreen(),
     );
   }
 }
