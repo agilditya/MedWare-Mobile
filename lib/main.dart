@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'Admin/viewAllProduct.dart';
+import 'Admin/homeAdmin.dart';
+import 'package:tubes/Admin/homeAdmin.dart';
+
 
 void main() {
   runApp(MedWareApp());
@@ -14,7 +16,7 @@ class MedWareApp extends StatelessWidget {
       title: 'MedWare',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.red, fontFamily: 'Poppins'),
-      home: Viewallproduct(),
+      home: MedwareHomeAdminPage(),
     );
   }
 }

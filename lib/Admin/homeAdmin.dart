@@ -51,6 +51,35 @@ class MedwareHomeAdminPage extends StatelessWidget {
               radius: 25,
               backgroundColor: Colors.orange,
               backgroundImage: AssetImage('assets/apotik_anugerah.png'),
+            Text(
+              'ApotekSejahtera21',
+              style: TextStyle(
+                color: Colors.redAccent,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+            SizedBox(width: 8),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+              decoration: BoxDecoration(
+                color: Colors.blueAccent,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Text(
+                'Admin',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                ),
+              ),
+            ),
+            SizedBox(width: 8),
+            CircleAvatar(
+              radius: 20,
+              backgroundColor: Colors.orange,
+              backgroundImage: AssetImage('assets/logo_apotek.png'),
             ),
           ],
         ),
@@ -226,6 +255,10 @@ class MedwareHomeAdminPage extends StatelessWidget {
                   false,
                 ),
               ),
+              _customNavItem('assets/search_navbar.png', 'Search', false),
+              SizedBox(width: 40),
+              _customNavItem('assets/log_navbar.png', 'Log', false),
+              _customNavItem('assets/profile_navbar.png', 'Profile', false),
             ],
           ),
         ),
