@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'addproduct.dart'; 
-import 'medlog.dart';
+
+void main() {
+  runApp(MedwareApp());
+}
 
 class MedwareApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MedwareHomeAdminPage(),
+      home: MedwareHomeUserPage(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class MedwareHomeAdminPage extends StatelessWidget {
-
-class MedwareHomePage extends StatelessWidget {
+class MedwareHomeUserPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,28 +60,11 @@ class MedwareHomePage extends StatelessWidget {
                     ),
                     SizedBox(width: 10),
                     Expanded(
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            PageRouteBuilder(
-                              transitionDuration: Duration(milliseconds: 400),
-                              pageBuilder: (_, __, ___) => AddProductScreen(),
-                              transitionsBuilder: (_, animation, __, child) {
-                                return SlideTransition(
-                                  position: Tween<Offset>(begin: Offset(0, 1), end: Offset.zero).animate(animation),
-                                  child: child,
-                                );
-                              },
-                            ),
-                          );
-                        },
-                        child: dashboardTile(
-                          "ADD",
-                          "Add new products",
-                          Colors.blueAccent,
-                          'assets/add.png',
-                        ),
+                      child: dashboardTile(
+                        "ADD",
+                        "Add new products",
+                        Colors.blueAccent,
+                        'assets/add.png',
                       ),
                     ),
                   ],
@@ -99,19 +82,11 @@ class MedwareHomePage extends StatelessWidget {
                     ),
                     SizedBox(width: 10),
                     Expanded(
-                      child: GestureDetector( 
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => MedLogPage()), // Navigate to MedLogPage
-                          );
-                        },
-                        child: dashboardTile(
-                          "LOG",
-                          "view activity history",
-                          Colors.green,
-                          'assets/log.png',
-                        ),
+                      child: dashboardTile(
+                        "LOG",
+                        "view activity history",
+                        Colors.green,
+                        'assets/log.png',
                       ),
                     ),
                   ],
@@ -182,7 +157,7 @@ class MedwareHomePage extends StatelessWidget {
             alignment: Alignment.topRight,
             child: Image.asset(
               imagePath,
-              height: 130,
+              height: 130, // Perbesar gambar dari 40 ke 60
               width: 130,
               fit: BoxFit.contain,
             ),

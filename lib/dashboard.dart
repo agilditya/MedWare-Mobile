@@ -17,6 +17,13 @@ class DashboardScreen extends StatelessWidget {
               children: [
                 const SizedBox(height: 20),
                 Container(
+                  margin: const EdgeInsets.only(
+                    top: 0,
+                    left: 20,
+                    right: 20,
+                    bottom: 0,
+                  ),
+                  child: Image.asset('assets/MedWare.png', height: 100),
                   margin: const EdgeInsets.all(0),
                   child: Image.asset('assets/MedWare.png', height: 50),
                 ),

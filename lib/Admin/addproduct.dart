@@ -39,7 +39,12 @@ class _AddProductScreenState extends State<AddProductScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: const Icon(Icons.arrow_back, color: Colors.black),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.pop(context); // Kembali ke halaman sebelumnya (home page)
+          },
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: const Text(
