@@ -10,19 +10,39 @@ class DashboardScreen extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            margin: const EdgeInsets.all(10),
-            padding: const EdgeInsets.all(10),
+            margin: const EdgeInsets.only(
+              top: 40,
+              left: 25,
+              right: 25,
+              bottom: 0,
+            ),
+            padding: const EdgeInsets.only(
+              top: 0,
+              left: 20,
+              right: 20,
+              bottom: 0,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 20),
                 Container(
-                  margin: const EdgeInsets.all(0),
-                  child: Image.asset('assets/MedWare.png', height: 50),
+                  margin: const EdgeInsets.only(
+                    top: 0,
+                    left: 20,
+                    right: 20,
+                    bottom: 0,
+                  ),
+                  child: Image.asset('assets/MedWare.png', height: 100),
                 ),
                 const SizedBox(height: 10),
                 Container(
-                  margin: const EdgeInsets.all(0),
+                  margin: const EdgeInsets.only(
+                    top: 10,
+                    left: 25,
+                    right: 25,
+                    bottom: 10,
+                  ),
                   child: Image.asset('assets/dashboard.png', height: 350),
                 ),
                 const SizedBox(height: 20),
@@ -51,7 +71,7 @@ class DashboardScreen extends StatelessWidget {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 5),
+                const SizedBox(height: 20),
                 Text(
                   'Serves as a digital ledger for keeping track of all medical supplies, from medications to medical equipment.',
                   textAlign: TextAlign.center,
@@ -61,7 +81,7 @@ class DashboardScreen extends StatelessWidget {
                     color: Colors.red.shade300,
                   ),
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 100),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(

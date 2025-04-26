@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'forgotPassword.dart';
 import 'register.dart';
+import 'Admin/homeAdmin.dart';
+import 'User/homeUser.dart';
+import 'verifikasi.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -24,8 +27,35 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _handleLogin() {
     if (_formKey.currentState!.validate()) {
-      print('Email: ${_emailController.text}');
-      print('Password: ${_passwordController.text}');
+      final email = _emailController.text.trim();
+      final password = _passwordController.text.trim();
+
+      if (email == 'admin@medware.com' && password == 'admin123') {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder:
+                (context) =>
+                    VerificationScreen(role: 'admin'), // kirim role admin
+          ),
+        );
+      } else if (email == 'user@medware.com' && password == 'user123') {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder:
+                (context) =>
+                    VerificationScreen(role: 'user'), // kirim role user
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Invalid email or password.'),
+            backgroundColor: Colors.redAccent,
+          ),
+        );
+      }
     }
   }
 
@@ -59,36 +89,28 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  "Enter your email, username and password to create a new account.",
+                  "Enter your email, username and password to create \na new account.",
                   style: GoogleFonts.poppins(
                     fontSize: 14,
                     color: Colors.grey[600],
                   ),
                 ),
                 const SizedBox(height: 30),
-                Text(
-                  "Email Address",
-                  style: GoogleFonts.poppins(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 8),
                 TextFormField(
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "*This field is required";
-                    }
-                    if (!value.contains('@')) {
-                      return 'Please enter your email address with "@"';
-                    }
-                    return null;
-                  },
+                  validator:
+                      (value) =>
+                          value == null || value.isEmpty
+                              ? "*This field is required"
+                              : null,
                   decoration: InputDecoration(
                     labelText: 'Email Address',
-                    labelStyle: GoogleFonts.poppins(color: Colors.black54),
+                    labelStyle: GoogleFonts.poppins(
+                      color:
+                          Colors
+                              .black54, // Set label color to black before focus
+                    ),
                     hintText: 'Enter Email Address',
                     hintStyle: GoogleFonts.poppins(),
                     border: OutlineInputBorder(
@@ -97,19 +119,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
-                      borderSide: BorderSide(color: Colors.black54),
+                      borderSide: BorderSide(
+                        color: Colors.black54, // Set focus color to black
+                      ),
                     ),
                   ),
                 ),
                 const SizedBox(height: 20),
-                Text(
-                  "Password",
-                  style: GoogleFonts.poppins(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 8),
                 TextFormField(
                   controller: _passwordController,
                   obscureText: _obscureText,
@@ -120,7 +136,11 @@ class _LoginScreenState extends State<LoginScreen> {
                               : null,
                   decoration: InputDecoration(
                     labelText: 'Password',
-                    labelStyle: GoogleFonts.poppins(color: Colors.black54),
+                    labelStyle: GoogleFonts.poppins(
+                      color:
+                          Colors
+                              .black54, // Set label color to black before focus
+                    ),
                     hintText: 'Enter your password',
                     hintStyle: GoogleFonts.poppins(),
                     border: OutlineInputBorder(
@@ -129,7 +149,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
-                      borderSide: BorderSide(color: Colors.black54),
+                      borderSide: BorderSide(
+                        color: Colors.black54, // Set focus color to red
+                      ),
                     ),
                     suffixIcon: IconButton(
                       icon: Icon(

@@ -14,17 +14,23 @@ class _AddProductScreenState extends State<AddProductScreen> {
   void _showSuccessDialog(BuildContext context) {
     showDialog(
       context: context,
-      builder: (_) => AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        title: const Text('Success'),
-        content: const Text('Product has been successfully saved.'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: const Text('OK', style: TextStyle(color: Colors.redAccent)),
+      builder:
+          (_) => AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            title: const Text('Success'),
+            content: const Text('Product has been successfully saved.'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: const Text(
+                  'OK',
+                  style: TextStyle(color: Colors.redAccent),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
     );
   }
 
@@ -39,7 +45,12 @@ class _AddProductScreenState extends State<AddProductScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: const Icon(Icons.arrow_back, color: Colors.black),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.pop(context); // Kembali ke halaman sebelumnya (home page)
+          },
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: const Text(
@@ -79,20 +90,44 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 ),
               ),
               const SizedBox(height: 24),
-              _InputField(label: 'Product Name *', isRequired: true, controllerMap: _controllers),
+              _InputField(
+                label: 'Product Name *',
+                isRequired: true,
+                controllerMap: _controllers,
+              ),
               _InputField(label: 'Composition', controllerMap: _controllers),
               _InputField(label: 'Side Effects', controllerMap: _controllers),
-              _InputField(label: 'Stock Product *', isRequired: true, controllerMap: _controllers),
+              _InputField(
+                label: 'Stock Product *',
+                isRequired: true,
+                controllerMap: _controllers,
+              ),
               _InputField(
                 label: 'Price *',
                 isRequired: true,
                 isNumeric: true,
                 controllerMap: _controllers,
               ),
-              _InputField(label: 'Code *', isRequired: true, controllerMap: _controllers),
-              _InputField(label: 'Description *', isRequired: true, controllerMap: _controllers),
-              _InputField(label: 'Expired *', isRequired: true, controllerMap: _controllers),
-              _InputField(label: 'Category *', isRequired: true, controllerMap: _controllers),
+              _InputField(
+                label: 'Code *',
+                isRequired: true,
+                controllerMap: _controllers,
+              ),
+              _InputField(
+                label: 'Description *',
+                isRequired: true,
+                controllerMap: _controllers,
+              ),
+              _InputField(
+                label: 'Expired *',
+                isRequired: true,
+                controllerMap: _controllers,
+              ),
+              _InputField(
+                label: 'Category *',
+                isRequired: true,
+                controllerMap: _controllers,
+              ),
               const SizedBox(height: 24),
               SizedBox(
                 width: double.infinity,
@@ -149,20 +184,24 @@ class _InputField extends StatelessWidget {
             color: Colors.redAccent,
             fontWeight: FontWeight.bold,
           ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(6),
-          ),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(6)),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(6),
             borderSide: const BorderSide(color: Colors.redAccent, width: 2),
           ),
-          contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 12,
+            vertical: 16,
+          ),
         ),
         validator: (value) {
           if (isRequired && (value == null || value.trim().isEmpty)) {
             return 'This field is required';
           }
-          if (isNumeric && value != null && value.trim().isNotEmpty && double.tryParse(value) == null) {
+          if (isNumeric &&
+              value != null &&
+              value.trim().isNotEmpty &&
+              double.tryParse(value) == null) {
             return 'Please enter a valid number';
           }
           return null;
