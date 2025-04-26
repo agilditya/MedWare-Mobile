@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class LogoutAdminPage extends StatelessWidget {
-  const LogoutAdminPage({Key? key}) : super(key: key);
+class LogoutStaffPage extends StatelessWidget {
+  const LogoutStaffPage({Key? key}) : super(key: key);
 
   void _showLogoutDialog(BuildContext context) {
     showDialog(
@@ -12,7 +12,7 @@ class LogoutAdminPage extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
           ),
           title: const Text(
-            "Log out of admin?",
+            "Log out of staff?",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           content: const Text("You will be logged out of your account"),
@@ -107,7 +107,7 @@ class LogoutAdminPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: const Text(
-                    "Admin",
+                    "Staff",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,

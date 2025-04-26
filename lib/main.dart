@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import 'User/profile.dart';
+import 'dashboard.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MedWareApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MedWareApp extends StatelessWidget {
+  const MedWareApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'MedWare',
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      home: LogoutStaffPage(),
+      theme: ThemeData(primarySwatch: Colors.red, fontFamily: 'Poppins'),
+      home: DashboardScreen(),
     );
   }
 }

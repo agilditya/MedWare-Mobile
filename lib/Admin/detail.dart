@@ -33,10 +33,7 @@ class ProductDetailsScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: Image.asset(
-                  'assets/amoxsan.png',
-                  fit: BoxFit.cover,
-                ),
+                child: Image.asset('assets/amoxsan.png', fit: BoxFit.cover),
               ),
             ),
             const SizedBox(height: 12),
@@ -81,9 +78,7 @@ class ProductDetailsScreen extends StatelessWidget {
                       text: 'Composition: ',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    TextSpan(
-                      text: 'Amoxicillin Trihydrate 500 mg',
-                    ),
+                    TextSpan(text: 'Amoxicillin Trihydrate 500 mg'),
                   ],
                 ),
                 style: TextStyle(fontSize: 14),
@@ -118,9 +113,7 @@ class ProductDetailsScreen extends StatelessWidget {
                       text: 'Expired: ',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    TextSpan(
-                      text: '2025-06-15',
-                    ),
+                    TextSpan(text: '2025-06-15'),
                   ],
                 ),
                 style: TextStyle(fontSize: 14),
@@ -136,9 +129,7 @@ class ProductDetailsScreen extends StatelessWidget {
                       text: 'Code: ',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    TextSpan(
-                      text: 'AMX500-001',
-                    ),
+                    TextSpan(text: 'AMX500-001'),
                   ],
                 ),
                 style: TextStyle(fontSize: 14),
@@ -154,9 +145,7 @@ class ProductDetailsScreen extends StatelessWidget {
                       text: 'Stock: ',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    TextSpan(
-                      text: '50',
-                    ),
+                    TextSpan(text: '50'),
                   ],
                 ),
                 style: TextStyle(fontSize: 14),
@@ -175,7 +164,8 @@ class ProductDetailsScreen extends StatelessWidget {
                       backgroundColor: Colors.red,
                       padding: const EdgeInsets.symmetric(vertical: 16),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
                     ),
                     child: const Text(
                       'Edit Stock',
@@ -193,7 +183,8 @@ class ProductDetailsScreen extends StatelessWidget {
                       backgroundColor: Colors.blue,
                       padding: const EdgeInsets.symmetric(vertical: 16),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
                     ),
                     child: const Text(
                       'Delete Product',
@@ -251,7 +242,12 @@ class ProductDetailsScreen extends StatelessWidget {
                         Navigator.of(context).pop();
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 199, 103, 96),
+                        backgroundColor: const Color.fromARGB(
+                          255,
+                          199,
+                          103,
+                          96,
+                        ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
@@ -266,7 +262,12 @@ class ProductDetailsScreen extends StatelessWidget {
                         Navigator.of(context).pop();
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 199, 103, 96),
+                        backgroundColor: const Color.fromARGB(
+                          255,
+                          199,
+                          103,
+                          96,
+                        ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
@@ -322,7 +323,12 @@ class ProductDetailsScreen extends StatelessWidget {
                         Navigator.of(context).pop();
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 107, 152, 225),
+                        backgroundColor: const Color.fromARGB(
+                          255,
+                          107,
+                          152,
+                          225,
+                        ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
@@ -337,7 +343,12 @@ class ProductDetailsScreen extends StatelessWidget {
                         Navigator.of(context).pop();
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 107, 152, 225),
+                        backgroundColor: const Color.fromARGB(
+                          255,
+                          107,
+                          152,
+                          225,
+                        ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
