@@ -21,19 +21,48 @@ class MedwareHomeAdminPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
         toolbarHeight: 80,
-        title: Text(
-          'Medware',
-          style: TextStyle(
-            color: Colors.redAccent,
-            fontWeight: FontWeight.bold,
-            fontSize: 28,
-          ),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Text(
+              'ApotekSejahtera21',
+              style: TextStyle(
+                color: Colors.redAccent,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+            SizedBox(width: 8),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+              decoration: BoxDecoration(
+                color: Colors.blueAccent,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Text(
+                'Admin',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                ),
+              ),
+            ),
+            SizedBox(width: 8),
+            CircleAvatar(
+              radius: 20,
+              backgroundColor: Colors.orange,
+              backgroundImage: AssetImage('assets/logo_apotek.png'),
+            ),
+          ],
         ),
       ),
+
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
@@ -110,13 +139,13 @@ class MedwareHomeAdminPage extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) => MedLogPage(),
-                            ), // Navigate to MedLogPage
+                            ),
                           );
                         },
                         child: dashboardTile(
                           "LOG",
                           "view activity history",
-                          Colors.green,
+                          Colors.orange,
                           'assets/log.png',
                         ),
                       ),
@@ -153,19 +182,36 @@ class MedwareHomeAdminPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.redAccent,
-        unselectedItemColor: Colors.grey,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add_circle, size: 40),
-            label: "",
+
+      floatingActionButton: Container(
+        height: 65,
+        width: 65,
+        child: FloatingActionButton(
+          onPressed: () {},
+          backgroundColor: Colors.redAccent,
+          shape: CircleBorder(),
+          child: Image.asset('assets/add_navbar.png', height: 32, width: 32),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
+        shape: CircularNotchedRectangle(),
+        notchMargin: 8.0,
+        child: SizedBox(
+          height: 70,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _customNavItem('assets/home_navbar.png', 'Home', true),
+              _customNavItem('assets/search_navbar.png', 'Search', false),
+              SizedBox(width: 40),
+              _customNavItem('assets/log_navbar.png', 'Log', false),
+              _customNavItem('assets/profile_navbar.png', 'Profile', false),
+            ],
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.list_alt), label: "Log"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-        ],
+        ),
       ),
     );
   }
@@ -181,7 +227,7 @@ class MedwareHomeAdminPage extends StatelessWidget {
         color: color.withOpacity(0.9),
         borderRadius: BorderRadius.circular(16),
       ),
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.all(8), // ✅ Kotaknya dikecilkan
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -189,22 +235,22 @@ class MedwareHomeAdminPage extends StatelessWidget {
             alignment: Alignment.topRight,
             child: Image.asset(
               imagePath,
-              height: 130,
+              height: 130, // ✅ Gambar tetap
               width: 130,
               fit: BoxFit.contain,
             ),
           ),
-          SizedBox(height: 8),
+          SizedBox(height: 6),
           Text(
             title,
             style: TextStyle(
-              fontSize: 24,
+              fontSize: 20,
               color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 8),
-          Text(subtitle, style: TextStyle(fontSize: 14, color: Colors.white)),
+          SizedBox(height: 6),
+          Text(subtitle, style: TextStyle(fontSize: 12, color: Colors.white)),
         ],
       ),
     );
@@ -235,6 +281,31 @@ class MedwareHomeAdminPage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _customNavItem(String assetPath, String label, bool isActive) {
+    double iconHeight = label == 'Log' ? 30 : 24;
+    double iconWidth = label == 'Log' ? 30 : 24;
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image.asset(
+          assetPath,
+          height: iconHeight,
+          width: iconWidth,
+          color: isActive ? Colors.redAccent : Colors.black,
+        ),
+        Text(
+          label,
+          style: TextStyle(
+            color: isActive ? Colors.redAccent : Colors.black,
+            fontSize: 12,
+          ),
+        ),
+      ],
     );
   }
 }
