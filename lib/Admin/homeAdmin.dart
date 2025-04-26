@@ -14,7 +14,7 @@ class MedwareApp extends StatelessWidget {
 
 class MedwareHomeAdminPage extends StatelessWidget {
 
-class MedwareHomePage extends StatelessWidget {
+class HomeAdmin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
