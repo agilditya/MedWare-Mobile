@@ -1,20 +1,8 @@
 import 'package:flutter/material.dart';
 import 'addproduct.dart';
 import 'medlog.dart';
-
-void main() {
-  runApp(MedwareApp());
-}
-
-class MedwareApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MedwareHomeAdminPage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
+import 'profileAdmin.dart';
+import 'viewAllProduct.dart';
 
 class MedwareHomeAdminPage extends StatelessWidget {
   @override
@@ -29,6 +17,40 @@ class MedwareHomeAdminPage extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  'ApotekSejahtera21',
+                  style: TextStyle(
+                    color: Colors.redAccent,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+                SizedBox(height: 4),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: Color(0xFF525FE1), // Updated color to #525FE1
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Text(
+                    'Admin',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(width: 8),
+            CircleAvatar(
+              radius: 25,
+              backgroundColor: Colors.orange,
+              backgroundImage: AssetImage('assets/apotik_anugerah.png'),
             Text(
               'ApotekSejahtera21',
               style: TextStyle(
@@ -72,7 +94,7 @@ class MedwareHomeAdminPage extends StatelessWidget {
                 hintText: 'Search',
                 prefixIcon: Icon(Icons.search),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(40),
                 ),
               ),
             ),
@@ -205,6 +227,34 @@ class MedwareHomeAdminPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _customNavItem('assets/home_navbar.png', 'Home', true),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Viewallproduct()),
+                  );
+                },
+                child: _customNavItem(
+                  'assets/search_navbar.png',
+                  'Search',
+                  false,
+                ),
+              ),
+              SizedBox(width: 40),
+              _customNavItem('assets/log_navbar.png', 'Log', false),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LogoutStaffPage()),
+                  );
+                },
+                child: _customNavItem(
+                  'assets/profile_navbar.png',
+                  'Profile',
+                  false,
+                ),
+              ),
               _customNavItem('assets/search_navbar.png', 'Search', false),
               SizedBox(width: 40),
               _customNavItem('assets/log_navbar.png', 'Log', false),

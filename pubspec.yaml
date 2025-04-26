@@ -68,6 +68,8 @@ flutter:
     - assets/email_verification.png
     - assets/forgotPass.png
     - assets/amoxsan.png
+    - assets/panadol.png
+    - assets/obhcombi.png
     - assets/barang.png
     - assets/add.png
     - assets/view.png
@@ -80,6 +82,7 @@ flutter:
     - assets/log_navbar.png
     - assets/profile_navbar.png
     - assets/apotik_anugerah.png
+    - assets/payment.png
     - assets/logo_apotek.png
 
   # An image asset can refer to one or more resolution-specific "variants", see

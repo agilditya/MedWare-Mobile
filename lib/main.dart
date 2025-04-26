@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
+import 'Admin/homeAdmin.dart';
 import 'package:tubes/Admin/homeAdmin.dart';
-import 'package:tubes/User/homeUser.dart';
-import 'dashboard.dart';
-import 'User/cart.dart'; 
 
 
 void main() {
@@ -19,7 +17,6 @@ class MedWareApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.red, fontFamily: 'Poppins'),
       home: MedwareHomeAdminPage(),
-      home: PaymentPage(),
     );
   }
 }
