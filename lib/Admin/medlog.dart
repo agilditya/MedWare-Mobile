@@ -205,7 +205,7 @@ class MedLogPage extends StatelessWidget {
                 onTap: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => LogoutStaffPage()),
+                    MaterialPageRoute(builder: (context) => LogoutAdminPage()),
                   );
                 },
                 child: _customNavItem(

@@ -7,8 +7,8 @@ import 'medlog.dart';
 import 'addproduct.dart';
 import 'editprofile.dart';
 
-class LogoutStaffPage extends StatelessWidget {
-  const LogoutStaffPage({Key? key}) : super(key: key);
+class LogoutAdminPage extends StatelessWidget {
+  const LogoutAdminPage({Key? key}) : super(key: key);
 
   void _showLogoutDialog(BuildContext context) {
     showDialog(

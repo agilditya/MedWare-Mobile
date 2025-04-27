@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'logoutstaff.dart';
+import 'profile.dart';
 
 class EditProfileUser extends StatefulWidget {
   const EditProfileUser({super.key});

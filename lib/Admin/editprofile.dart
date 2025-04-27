@@ -97,7 +97,7 @@ class _EditProfileAdminState extends State<EditProfileAdmin> {
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => LogoutStaffPage()),
+                    MaterialPageRoute(builder: (context) => LogoutAdminPage()),
                   );
                 },
                 style: ElevatedButton.styleFrom(

@@ -247,7 +247,7 @@ class MedwareHomeAdminPage extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => LogoutStaffPage()),
+                    MaterialPageRoute(builder: (context) => LogoutAdminPage()),
                   );
                 },
                 child: _customNavItem(

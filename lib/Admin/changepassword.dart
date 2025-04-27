@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tubes/Admin/LogoutAdmin.dart';
+import 'package:tubes/Admin/profileAdmin.dart';
 
 class ChangePasswordScreen extends StatefulWidget {
   const ChangePasswordScreen({super.key});

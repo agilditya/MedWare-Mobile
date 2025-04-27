@@ -99,7 +99,10 @@ class _OrderPageScreenState extends State<OrderPageScreen> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                       ),
-                      child: Text('Search'),
+                      child: Text(
+                        'Search',
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                   ),
                 ],
@@ -112,7 +115,7 @@ class _OrderPageScreenState extends State<OrderPageScreen> {
                 crossAxisCount: 2,
                 mainAxisSpacing: 10,
                 crossAxisSpacing: 10,
-                childAspectRatio: 0.75,
+                childAspectRatio: 0.68,
                 children: [
                   productCard(
                     'assets/panadol.png',
@@ -162,8 +165,6 @@ class _OrderPageScreenState extends State<OrderPageScreen> {
                       'Continue to Cart',
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
-                    SizedBox(width: 8),
-                    Icon(Icons.arrow_forward, color: Colors.white),
                   ],
                 ),
               ),
