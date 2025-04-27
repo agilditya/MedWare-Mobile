@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'homeAdmin.dart';
 import 'ViewProductAdmin.dart';
 import 'profileAdmin.dart';
-import 'addproduct.dart'; // Tambahkan import ini
+import 'addproduct.dart';
 
 void main() {
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MedLogPage()));

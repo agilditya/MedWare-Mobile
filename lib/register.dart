@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'verifikasi.dart'; // pastikan path sesuai
-import 'login.dart'; // pastikan path sesuai
+import 'verifikasi.dart';
+import 'login.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -71,7 +71,7 @@ class RegisterScreen extends StatelessWidget {
                   return null;
                 },
               ),
-              const SizedBox(height: 30), // Updated spacing
+              const SizedBox(height: 30),
               Text(
                 "Email Address",
                 style: GoogleFonts.poppins(fontSize: 14, color: Colors.black54),
@@ -100,7 +100,7 @@ class RegisterScreen extends StatelessWidget {
                   return null;
                 },
               ),
-              const SizedBox(height: 30), // Updated spacing
+              const SizedBox(height: 30),
               Text(
                 "Password",
                 style: GoogleFonts.poppins(fontSize: 14, color: Colors.black54),

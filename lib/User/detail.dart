@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'viewProductUser.dart'; // Halaman produk user (pastikan path-nya sesuai)
-import 'orderpage.dart'; // Halaman order
-import 'profile.dart'; // Halaman profil user
-import 'homeUser.dart'; // Halaman HomeUserPage yang akan diarahkan
-import 'detail.dart'; // Halaman detail produk
+import 'viewProductUser.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   const ProductDetailsScreen({super.key});
@@ -17,9 +13,7 @@ class ProductDetailsScreen extends StatelessWidget {
           onPressed: () {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(
-                builder: (context) => Viewallproductuser(),
-              ), // Ganti dengan halaman ViewProductUser
+              MaterialPageRoute(builder: (context) => Viewallproductuser()),
             );
           },
         ),

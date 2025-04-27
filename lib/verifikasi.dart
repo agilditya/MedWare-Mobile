@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'User/homeUser.dart'; 
-import 'Admin/homeAdmin.dart'; // Pastikan file homeAdmin.dart ada di direktori yang benar
+import 'User/homeUser.dart';
+import 'Admin/homeAdmin.dart';
 
 void main() {
   runApp(
-    MaterialApp(home: VerificationScreen(role: 'user'), debugShowCheckedModeBanner: false), // Kirim role yang sesuai (admin/user)
+    MaterialApp(
+      home: VerificationScreen(role: 'user'),
+      debugShowCheckedModeBanner: false,
+    ),
   );
 }
 
 class VerificationScreen extends StatefulWidget {
-  final String role; // Menyimpan role yang diterima
+  final String role;
 
-  // Constructor dengan required role
   VerificationScreen({required this.role});
 
   @override
@@ -100,52 +102,60 @@ class _VerificationScreenState extends State<VerificationScreen> {
                         String code = _codeController.map((c) => c.text).join();
                         print("Kode verifikasi: $code");
 
-                        // Cek kode berdasarkan role yang dikirim
                         if (widget.role == 'admin' && code == '000000') {
-                          // Verifikasi admin
                           showDialog(
                             context: context,
-                            builder: (context) => AlertDialog(
-                              title: Text("Verifikasi Berhasil"),
-                              content: Text("Kode admin berhasil diverifikasi."),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop(); 
-                                    Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => MedwareHomeAdminPage(),
-                                      ),
-                                    );
-                                  },
-                                  child: Text("OK"),
+                            builder:
+                                (context) => AlertDialog(
+                                  title: Text("Verifikasi Berhasil"),
+                                  content: Text(
+                                    "Kode admin berhasil diverifikasi.",
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder:
+                                                (context) =>
+                                                    MedwareHomeAdminPage(),
+                                          ),
+                                        );
+                                      },
+                                      child: Text("OK"),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
                           );
                         } else if (widget.role == 'user' && code == '123456') {
                           // Verifikasi user
                           showDialog(
                             context: context,
-                            builder: (context) => AlertDialog(
-                              title: Text("Verifikasi Berhasil"),
-                              content: Text("Kode user berhasil diverifikasi."),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                    Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => MedwareHomeUserPage(),
-                                      ),
-                                    );
-                                  },
-                                  child: Text("OK"),
+                            builder:
+                                (context) => AlertDialog(
+                                  title: Text("Verifikasi Berhasil"),
+                                  content: Text(
+                                    "Kode user berhasil diverifikasi.",
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder:
+                                                (context) =>
+                                                    MedwareHomeUserPage(),
+                                          ),
+                                        );
+                                      },
+                                      child: Text("OK"),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
                           );
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(

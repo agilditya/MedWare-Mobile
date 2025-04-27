@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:tubes/Admin/changepassword.dart';
-import 'package:tubes/dashboard.dart'; // Import dashboard untuk logout
+import 'package:tubes/dashboard.dart';
 import 'homeAdmin.dart';
 import 'ViewProductAdmin.dart';
 import 'medlog.dart';
-import 'addproduct.dart'; // Import AddProductScreen
-import 'editprofile.dart'; // Import halaman Edit Profile
-import 'package:tubes/Admin/changepassword.dart'; // ✅ Import halaman Change Password
+import 'addproduct.dart';
+import 'editprofile.dart';
 
 class LogoutStaffPage extends StatelessWidget {
   const LogoutStaffPage({Key? key}) : super(key: key);

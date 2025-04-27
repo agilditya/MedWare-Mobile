@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'forgotPassword.dart';
 import 'register.dart';
-import 'Admin/homeAdmin.dart';
-import 'User/homeUser.dart';
 import 'verifikasi.dart';
-
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -35,14 +32,14 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => VerificationScreen(role: 'admin'), // kirim role admin
+            builder: (context) => VerificationScreen(role: 'admin'),
           ),
         );
       } else if (email == 'user@medware.com' && password == 'user123') {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => VerificationScreen(role: 'user'), // kirim role user
+            builder: (context) => VerificationScreen(role: 'user'),
           ),
         );
       } else {
@@ -55,9 +52,6 @@ class _LoginScreenState extends State<LoginScreen> {
       }
     }
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   "Welcome to",
                   style: GoogleFonts.poppins(
                     fontSize: 24,
-                    fontWeight: FontWeight.bold, // Added bold styling
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
@@ -106,11 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               : null,
                   decoration: InputDecoration(
                     labelText: 'Email Address',
-                    labelStyle: GoogleFonts.poppins(
-                      color:
-                          Colors
-                              .black54, // Set label color to black before focus
-                    ),
+                    labelStyle: GoogleFonts.poppins(color: Colors.black54),
                     hintText: 'Enter Email Address',
                     hintStyle: GoogleFonts.poppins(),
                     border: OutlineInputBorder(
@@ -119,9 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
-                      borderSide: BorderSide(
-                        color: Colors.black54, // Set focus color to black
-                      ),
+                      borderSide: BorderSide(color: Colors.black54),
                     ),
                   ),
                 ),
@@ -136,11 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               : null,
                   decoration: InputDecoration(
                     labelText: 'Password',
-                    labelStyle: GoogleFonts.poppins(
-                      color:
-                          Colors
-                              .black54, // Set label color to black before focus
-                    ),
+                    labelStyle: GoogleFonts.poppins(color: Colors.black54),
                     hintText: 'Enter your password',
                     hintStyle: GoogleFonts.poppins(),
                     border: OutlineInputBorder(
@@ -149,9 +133,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
-                      borderSide: BorderSide(
-                        color: Colors.black54, // Set focus color to red
-                      ),
+                      borderSide: BorderSide(color: Colors.black54),
                     ),
                     suffixIcon: IconButton(
                       icon: Icon(

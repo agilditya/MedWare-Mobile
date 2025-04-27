@@ -11,7 +11,6 @@ class MedwareHomeAdminPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
 
-      // ✅ AppBar sudah disesuaikan
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
@@ -63,7 +62,6 @@ class MedwareHomeAdminPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
-            // Bagian Search DIHAPUS
             SizedBox(height: 16),
             Column(
               children: [
@@ -85,9 +83,7 @@ class MedwareHomeAdminPage extends StatelessWidget {
                             context,
                             PageRouteBuilder(
                               transitionDuration: Duration(milliseconds: 400),
-                              pageBuilder:
-                                  (_, __, ___) =>
-                                      AddProductScreen(), // Ensure AddProductScreen is defined
+                              pageBuilder: (_, __, ___) => AddProductScreen(),
                               transitionsBuilder: (_, animation, __, child) {
                                 return SlideTransition(
                                   position: Tween<Offset>(
@@ -138,9 +134,7 @@ class MedwareHomeAdminPage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder:
-                                  (context) =>
-                                      MedLogPage(), // Ensure MedLogPage is defined
+                              builder: (context) => MedLogPage(),
                             ),
                           );
                         },

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tubes/dashboard.dart';
-import 'orderpage.dart'; // Halaman Pay
-import 'ViewProductUser.dart'; // Halaman Search
-import 'homeUser.dart'; // Halaman Home
-import 'editprofileUser.dart'; // Import halaman Edit Profile User
-import 'package:tubes/User/changepasswordUser.dart'; // Import halaman Change Password User
+import 'orderpage.dart';
+import 'ViewProductUser.dart';
+import 'homeUser.dart';
+import 'editprofileUser.dart';
+import 'package:tubes/User/changepasswordUser.dart';
 
 class LogoutStaffPage extends StatelessWidget {
   const LogoutStaffPage({Key? key}) : super(key: key);
@@ -50,7 +50,7 @@ class LogoutStaffPage extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                Navigator.of(context).pop(); // Tutup dialog
+                Navigator.of(context).pop();
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
@@ -189,7 +189,6 @@ class LogoutStaffPage extends StatelessWidget {
         ],
       ),
 
-      // ✅ NAVBAR DENGAN AKSI
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
         child: SizedBox(

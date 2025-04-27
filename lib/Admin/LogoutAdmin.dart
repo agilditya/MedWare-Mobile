@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tubes/dashboard.dart';
-// ✅ Import halaman tujuan setelah log out
 
 class LogoutAdminPage extends StatelessWidget {
   const LogoutAdminPage({Key? key}) : super(key: key);
@@ -49,9 +48,7 @@ class LogoutAdminPage extends StatelessWidget {
                 Navigator.of(context).pop(); // Tutup dialog
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => DashboardScreen(),
-                  ), // ✅ Arahkan ke Dashboard
+                  MaterialPageRoute(builder: (context) => DashboardScreen()),
                 );
               },
             ),
@@ -73,9 +70,7 @@ class LogoutAdminPage extends StatelessWidget {
               _buildNavItem(Icons.home, "Home", false),
               _buildNavItem(Icons.search, "Search", false),
               ElevatedButton(
-                onPressed: () {
-                  // Tambah aksi
-                },
+                onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   shape: CircleBorder(),
                   padding: EdgeInsets.all(12),

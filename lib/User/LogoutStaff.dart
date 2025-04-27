@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'homeUser.dart'; // ✅ Import halaman tujuan setelah logout
+import 'homeUser.dart';
 
 class LogoutStaffPage extends StatelessWidget {
   const LogoutStaffPage({Key? key}) : super(key: key);
@@ -45,12 +45,12 @@ class LogoutStaffPage extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                Navigator.of(context).pop(); // Tutup dialog
+                Navigator.of(context).pop();
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                     builder: (context) => MedwareHomeUserPage(),
-                  ), // ✅ Arahkan ke HomeUserPage
+                  ),
                 );
               },
             ),
@@ -72,9 +72,7 @@ class LogoutStaffPage extends StatelessWidget {
               _buildNavItem(Icons.home, "Home", false),
               _buildNavItem(Icons.search, "Search", false),
               ElevatedButton(
-                onPressed: () {
-                  // Tambah aksi
-                },
+                onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   shape: CircleBorder(),
                   padding: EdgeInsets.all(12),
@@ -83,7 +81,7 @@ class LogoutStaffPage extends StatelessWidget {
                 child: Icon(Icons.add, color: Colors.white),
               ),
               _buildNavItem(Icons.inventory_2, "Log", false),
-              _buildNavItem(Icons.person, "Profile", true), // aktifkan profile
+              _buildNavItem(Icons.person, "Profile", true),
             ],
           ),
         ),
@@ -146,17 +144,13 @@ class LogoutStaffPage extends StatelessWidget {
                 ListTile(
                   title: const Text("My Profile"),
                   trailing: const Icon(Icons.arrow_forward_ios),
-                  onTap: () {
-                    // Aksi ke halaman profil
-                  },
+                  onTap: () {},
                 ),
                 const Divider(height: 1),
                 ListTile(
                   title: const Text("Change Password"),
                   trailing: const Icon(Icons.arrow_forward_ios),
-                  onTap: () {
-                    // Aksi ke halaman ubah password
-                  },
+                  onTap: () {},
                 ),
               ],
             ),

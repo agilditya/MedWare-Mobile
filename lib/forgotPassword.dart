@@ -15,7 +15,7 @@ class ForgotPasswordScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Align(
-              alignment: Alignment.centerLeft, // Align to the left
+              alignment: Alignment.centerLeft,
               child: Text(
                 'Forgot Password',
                 textAlign: TextAlign.left,
@@ -28,7 +28,7 @@ class ForgotPasswordScreen extends StatelessWidget {
             ),
             SizedBox(height: 8),
             Align(
-              alignment: Alignment.centerLeft, // Align to the left
+              alignment: Alignment.centerLeft,
               child: Text(
                 'Please enter your email. We will send you an email to reset your password.',
                 textAlign: TextAlign.left,
@@ -41,10 +41,7 @@ class ForgotPasswordScreen extends StatelessWidget {
             TextField(
               decoration: InputDecoration(
                 labelText: 'Email Address',
-                labelStyle: GoogleFonts.poppins(
-                  color:
-                      Colors.black54, // Set label color to black before focus
-                ),
+                labelStyle: GoogleFonts.poppins(color: Colors.black54),
                 hintText: 'Enter Email Address',
                 hintStyle: GoogleFonts.poppins(),
                 border: OutlineInputBorder(
@@ -53,9 +50,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
-                  borderSide: BorderSide(
-                    color: Colors.grey,
-                  ), // Set focus color to red
+                  borderSide: BorderSide(color: Colors.grey),
                 ),
               ),
             ),
@@ -87,7 +82,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => LoginScreen()),
-                  ); // Navigate to LoginScreen directly
+                  );
                 },
                 style: OutlinedButton.styleFrom(
                   padding: EdgeInsets.symmetric(vertical: 16),

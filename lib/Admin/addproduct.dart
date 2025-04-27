@@ -27,11 +27,11 @@ class _AddProductScreenState extends State<AddProductScreen> {
             actions: [
               TextButton(
                 onPressed: () {
-                  Navigator.of(context).pop(); // Tutup dialog
+                  Navigator.of(context).pop();
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (_) => Viewallproductadmin()),
-                  ); // Navigasi ke halaman ViewProductAdmin
+                  );
                 },
                 child: const Text(
                   'OK',
@@ -73,7 +73,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
-            Navigator.pop(context); // Kembali ke halaman sebelumnya
+            Navigator.pop(context);
           },
         ),
         backgroundColor: Colors.transparent,
@@ -123,7 +123,6 @@ class _AddProductScreenState extends State<AddProductScreen> {
               _InputField(label: 'Composition', controllerMap: _controllers),
               _InputField(label: 'Side Effects', controllerMap: _controllers),
 
-              // STOCK - dengan tombol + dan -
               Padding(
                 padding: const EdgeInsets.only(bottom: 12),
                 child: Row(
@@ -176,7 +175,6 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 controllerMap: _controllers,
               ),
 
-              // EXPIRED - Date Picker
               GestureDetector(
                 onTap: () => _pickDate(context),
                 child: AbsorbPointer(

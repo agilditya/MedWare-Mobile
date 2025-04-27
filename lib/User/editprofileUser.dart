@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'profile.dart'; // ✅ Ubah import tujuan setelah save (jika perlu)
+import 'logoutstaff.dart';
 
 class EditProfileUser extends StatefulWidget {
-  // ✅ Ubah nama class
   const EditProfileUser({super.key});
 
   @override
@@ -19,7 +18,9 @@ class _EditProfileUserState extends State<EditProfileUser> {
   final TextEditingController emailController = TextEditingController(
     text: 'sejahtera21@gmail.com',
   );
-  final TextEditingController addressController = TextEditingController();
+  final TextEditingController addressController = TextEditingController(
+    text: 'Jl. Sehat No. 21',
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,6 @@ class _EditProfileUserState extends State<EditProfileUser> {
         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16),
         child: Column(
           children: [
-            // Profile Image
             Stack(
               alignment: Alignment.center,
               children: [
@@ -61,11 +61,11 @@ class _EditProfileUserState extends State<EditProfileUser> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
               decoration: BoxDecoration(
-                color: Color(0xFF5A67D8),
+                color: Color.fromARGB(255, 29, 216, 36),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: const Text(
-                'User', // ✅ Ganti ke User
+                'User',
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -75,22 +75,18 @@ class _EditProfileUserState extends State<EditProfileUser> {
 
             const SizedBox(height: 32),
 
-            // Nama
             _buildTextField(label: 'Nama', controller: namaController),
             const SizedBox(height: 16),
 
-            // Username
             _buildTextField(label: 'Username', controller: usernameController),
             const SizedBox(height: 16),
 
-            // Email
             _buildTextField(
               label: 'Email Address',
               controller: emailController,
             ),
             const SizedBox(height: 16),
 
-            // Address
             _buildTextField(
               label: 'Address',
               controller: addressController,
@@ -98,17 +94,15 @@ class _EditProfileUserState extends State<EditProfileUser> {
             ),
             const Spacer(),
 
-            // Save Button
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  // Simpan logika penyimpanan profile di sini
-
-                  // ✅ Navigasi ke halaman ProfileUser (ubah sesuai kebutuhan)
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => LogoutStaffPage()),
+                    MaterialPageRoute(
+                      builder: (context) => const LogoutStaffPage(),
+                    ),
                   );
                 },
                 style: ElevatedButton.styleFrom(

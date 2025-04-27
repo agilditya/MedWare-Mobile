@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'orderpage.dart'; // KE ORDERPAGE
-import 'ViewProductUser.dart'; // Halaman produk user
-import 'profile.dart'; // Halaman profil user
+import 'orderpage.dart';
+import 'ViewProductUser.dart';
+import 'profile.dart';
 
 class MedwareHomeUserPage extends StatelessWidget {
   @override
@@ -148,7 +148,6 @@ class MedwareHomeUserPage extends StatelessWidget {
         ),
       ),
 
-      // ✅ NAVBAR
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
         child: SizedBox(

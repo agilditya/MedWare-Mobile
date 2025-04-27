@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'viewProductAdmin.dart'; // Pastikan ini sesuai dengan path project kamu
+import 'viewProductAdmin.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   const ProductDetailsScreen({super.key});

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tubes/User/profile.dart';
-import 'profile.dart'; // ✅ Import halaman tujuan setelah ganti password
 
 class ChangePasswordScreen extends StatefulWidget {
   const ChangePasswordScreen({super.key});
@@ -88,9 +87,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  // Simpan logika ganti password di sini
-
-                  // ✅ Navigasi ke halaman ProfileAdmin
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => LogoutStaffPage()),

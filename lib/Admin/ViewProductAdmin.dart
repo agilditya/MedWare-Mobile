@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'profileAdmin.dart';
 import 'detail.dart';
-import 'homeAdmin.dart'; // Tambahan untuk navigasi ke Home
-import 'medlog.dart'; // Untuk navigasi ke MedLog
-import 'addproduct.dart'; // Untuk navigasi ke Add Product
+import 'homeAdmin.dart';
+import 'medlog.dart';
+import 'addproduct.dart';
 
 class Viewallproductadmin extends StatelessWidget {
   @override
@@ -123,7 +123,6 @@ class Viewallproductadmin extends StatelessWidget {
         ),
       ),
 
-      // ✅ Navigasi ke AddProductScreen
       floatingActionButton: Container(
         height: 65,
         width: 65,

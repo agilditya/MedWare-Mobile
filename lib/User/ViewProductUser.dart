@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'orderpage.dart'; // Untuk tombol Pay
-import 'profile.dart'; // Untuk Profile
-import 'detail.dart'; // Detail produk
+import 'orderpage.dart';
+import 'profile.dart';
+import 'detail.dart';
 
 class Viewallproductuser extends StatelessWidget {
   @override
@@ -10,7 +10,7 @@ class Viewallproductuser extends StatelessWidget {
       backgroundColor: Colors.white,
 
       appBar: AppBar(
-        automaticallyImplyLeading: false, // Hapus tombol back
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         elevation: 0,
         toolbarHeight: 80,
@@ -113,14 +113,14 @@ class Viewallproductuser extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 10),
-                Expanded(child: SizedBox()), // Kosong
+                Expanded(child: SizedBox()),
               ],
             ),
           ],
         ),
       ),
 
-      // ✅ NAVBAR baru pakai gambar
+      //
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
         child: SizedBox(

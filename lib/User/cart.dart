@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'homeuser.dart'; // Import halaman Home
-import 'orderpage.dart'; // Import halaman OrderPageScreen
+import 'homeuser.dart';
+import 'orderpage.dart';
 
 class PaymentApp extends StatelessWidget {
   @override
@@ -26,17 +26,16 @@ class _PaymentPageState extends State<PaymentPage> {
             content: Text('Are you sure you want to confirm the payment?'),
             actions: [
               TextButton(
-                onPressed: () => Navigator.pop(context), // No
+                onPressed: () => Navigator.pop(context),
                 child: Text('No'),
               ),
               TextButton(
                 onPressed: () {
-                  Navigator.pop(context); // Close the dialog
+                  Navigator.pop(context);
                   setState(() {
                     paymentSuccess = true;
                   });
 
-                  // Menunggu 2 detik sebelum menampilkan dialog untuk kembali ke Home
                   Future.delayed(Duration(seconds: 2), () {
                     _showHomeRedirectDialog();
                   });
@@ -57,12 +56,12 @@ class _PaymentPageState extends State<PaymentPage> {
             content: Text('Do you want to go back to the Home page?'),
             actions: [
               TextButton(
-                onPressed: () => Navigator.pop(context), // Tetap di halaman ini
+                onPressed: () => Navigator.pop(context),
                 child: Text('No'),
               ),
               TextButton(
                 onPressed: () {
-                  Navigator.pop(context); // Menutup dialog
+                  Navigator.pop(context);
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
@@ -172,7 +171,7 @@ class _PaymentPageState extends State<PaymentPage> {
                 Center(
                   child: Column(
                     children: [
-                      CircularProgressIndicator(), // Loading spinner
+                      CircularProgressIndicator(),
                       SizedBox(height: 16),
                       Text(
                         'Payment Berhasil!',

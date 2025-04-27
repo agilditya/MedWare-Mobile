@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'profileAdmin.dart'; // ✅ Import halaman tujuan setelah save
+import 'profileAdmin.dart';
 
 class EditProfileAdmin extends StatefulWidget {
   const EditProfileAdmin({super.key});
@@ -34,7 +34,6 @@ class _EditProfileAdminState extends State<EditProfileAdmin> {
         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16),
         child: Column(
           children: [
-            // Profile Image
             Stack(
               alignment: Alignment.center,
               children: [
@@ -55,12 +54,11 @@ class _EditProfileAdminState extends State<EditProfileAdmin> {
               ],
             ),
 
-            // Admin Tag
             const SizedBox(height: 12),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
               decoration: BoxDecoration(
-                color: Color(0xFF5A67D8), // Warna biru keunguan
+                color: Color(0xFF5A67D8),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: const Text(
@@ -74,22 +72,18 @@ class _EditProfileAdminState extends State<EditProfileAdmin> {
 
             const SizedBox(height: 32),
 
-            // Nama
             _buildTextField(label: 'Nama', controller: namaController),
             const SizedBox(height: 16),
 
-            // Username
             _buildTextField(label: 'Username', controller: usernameController),
             const SizedBox(height: 16),
 
-            // Email
             _buildTextField(
               label: 'Email Address',
               controller: emailController,
             ),
             const SizedBox(height: 16),
 
-            // Address
             _buildTextField(
               label: 'Address',
               controller: addressController,
@@ -97,14 +91,10 @@ class _EditProfileAdminState extends State<EditProfileAdmin> {
             ),
             const Spacer(),
 
-            // Save Button
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  // Simpan logika penyimpanan profile di sini
-
-                  // ✅ Navigasi ke halaman ProfileAdmin
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => LogoutStaffPage()),

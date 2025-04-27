@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tubes/Admin/LogoutAdmin.dart';
-import 'profileAdmin.dart'; // ✅ Import halaman tujuan setelah ganti password
 
 class ChangePasswordScreen extends StatefulWidget {
   const ChangePasswordScreen({super.key});
@@ -57,7 +56,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             ),
             const SizedBox(height: 16),
 
-            // New Password
             _buildPasswordField(
               label: 'New Password',
               controller: newPasswordController,
@@ -70,7 +68,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             ),
             const SizedBox(height: 16),
 
-            // Confirm Password
             _buildPasswordField(
               label: 'Confirm Password',
               controller: confirmPasswordController,
@@ -83,7 +80,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             ),
             const Spacer(),
 
-            // Save Button
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'cart.dart'; // Pastikan kamu sudah membuat halaman Cart.dart
+import 'cart.dart';
 
 class OrderPageScreen extends StatefulWidget {
   @override
@@ -112,8 +112,7 @@ class _OrderPageScreenState extends State<OrderPageScreen> {
                 crossAxisCount: 2,
                 mainAxisSpacing: 10,
                 crossAxisSpacing: 10,
-                childAspectRatio:
-                    0.75, // ✅ Disesuaikan seperti kotak Viewallproductuser
+                childAspectRatio: 0.75,
                 children: [
                   productCard(
                     'assets/panadol.png',
