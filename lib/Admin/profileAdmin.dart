@@ -1,4 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:tubes/Admin/changepassword.dart';
+import 'package:tubes/dashboard.dart'; // Import dashboard untuk logout
+import 'homeAdmin.dart';
+import 'ViewProductAdmin.dart';
+import 'medlog.dart';
+import 'addproduct.dart'; // Import AddProductScreen
+import 'editprofile.dart'; // Import halaman Edit Profile
+import 'package:tubes/Admin/changepassword.dart'; // ✅ Import halaman Change Password
 
 class LogoutStaffPage extends StatelessWidget {
   const LogoutStaffPage({Key? key}) : super(key: key);
@@ -44,7 +52,10 @@ class LogoutStaffPage extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                Navigator.of(context).pop(); // Tutup dialog
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => DashboardScreen()),
+                );
               },
             ),
           ],
@@ -60,7 +71,12 @@ class LogoutStaffPage extends StatelessWidget {
         height: 65,
         width: 65,
         child: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AddProductScreen()),
+            );
+          },
           backgroundColor: Colors.redAccent,
           shape: CircleBorder(),
           child: Image.asset('assets/add_navbar.png', height: 32, width: 32),
@@ -76,23 +92,43 @@ class LogoutStaffPage extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _customNavItem('assets/home_navbar.png', 'Home', true),
-              _customNavItem('assets/search_navbar.png', 'Search', false),
-              SizedBox(width: 40),
-              _customNavItem('assets/log_navbar.png', 'Log', false),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => LogoutStaffPage()),
+                    MaterialPageRoute(
+                      builder: (context) => MedwareHomeAdminPage(),
+                    ),
+                  );
+                },
+                child: _customNavItem('assets/home_navbar.png', 'Home', false),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Viewallproductadmin(),
+                    ),
                   );
                 },
                 child: _customNavItem(
-                  'assets/profile_navbar.png',
-                  'Profile',
+                  'assets/search_navbar.png',
+                  'Search',
                   false,
                 ),
               ),
+              SizedBox(width: 40),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => MedLogPage()),
+                  );
+                },
+                child: _customNavItem('assets/log_navbar.png', 'Log', false),
+              ),
+              _customNavItem('assets/profile_navbar.png', 'Profile', true),
             ],
           ),
         ),
@@ -125,7 +161,7 @@ class LogoutStaffPage extends StatelessWidget {
                     vertical: 6,
                   ),
                   decoration: BoxDecoration(
-                    color: Color(0xFF525FE1), // Corrected color value
+                    color: Color(0xFF525FE1),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: const Text(
@@ -163,7 +199,12 @@ class LogoutStaffPage extends StatelessWidget {
                   title: const Text("My Profile"),
                   trailing: const Icon(Icons.arrow_forward_ios),
                   onTap: () {
-                    // Aksi ke halaman profil
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EditProfileAdmin(),
+                      ),
+                    );
                   },
                 ),
                 const Divider(height: 1),
@@ -171,7 +212,14 @@ class LogoutStaffPage extends StatelessWidget {
                   title: const Text("Change Password"),
                   trailing: const Icon(Icons.arrow_forward_ios),
                   onTap: () {
-                    // Aksi ke halaman ubah password
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder:
+                            (context) =>
+                                ChangePasswordScreen(), // ✅ Navigasi ke Change Password
+                      ),
+                    );
                   },
                 ),
               ],
@@ -190,7 +238,7 @@ class LogoutStaffPage extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  side: BorderSide(color: Colors.red, width: 1), // Added border
+                  side: BorderSide(color: Colors.red, width: 1),
                   shadowColor: Colors.white.withOpacity(0.1),
                   elevation: 4,
                 ),
@@ -199,7 +247,7 @@ class LogoutStaffPage extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
-                    fontWeight: FontWeight.bold, // Made text bold
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -210,24 +258,10 @@ class LogoutStaffPage extends StatelessWidget {
     );
   }
 
-  Widget _buildNavItem(IconData icon, String label, bool isActive) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(icon, color: isActive ? Colors.redAccent : Colors.black),
-        Text(
-          label,
-          style: TextStyle(
-            color: isActive ? Colors.redAccent : Colors.black,
-            fontSize: 12,
-          ),
-        ),
-      ],
-    );
-  }
-
   Widget _customNavItem(String iconPath, String label, bool isActive) {
+    double iconHeight = label == 'Log' ? 30 : 24;
+    double iconWidth = label == 'Log' ? 30 : 24;
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -235,8 +269,8 @@ class LogoutStaffPage extends StatelessWidget {
         Image.asset(
           iconPath,
           color: isActive ? Colors.redAccent : Colors.black,
-          height: 24,
-          width: 24,
+          height: iconHeight,
+          width: iconWidth,
         ),
         Text(
           label,
