@@ -32,7 +32,7 @@ class MedwareHomeAdminPage extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   decoration: BoxDecoration(
-                    color: Color(0xFF525FE1), // Updated color to #525FE1
+                    color: Colors.blueAccent,
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
@@ -49,35 +49,6 @@ class MedwareHomeAdminPage extends StatelessWidget {
             SizedBox(width: 8),
             CircleAvatar(
               radius: 25,
-              backgroundColor: Colors.orange,
-              backgroundImage: AssetImage('assets/apotik_anugerah.png'),
-            Text(
-              'ApotekSejahtera21',
-              style: TextStyle(
-                color: Colors.redAccent,
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-            SizedBox(width: 8),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-              decoration: BoxDecoration(
-                color: Colors.blueAccent,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Text(
-                'Admin',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 12,
-                ),
-              ),
-            ),
-            SizedBox(width: 8),
-            CircleAvatar(
-              radius: 20,
               backgroundColor: Colors.orange,
               backgroundImage: AssetImage('assets/logo_apotek.png'),
             ),

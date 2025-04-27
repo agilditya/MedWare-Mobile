@@ -309,14 +309,7 @@ class Viewallproduct extends StatelessWidget {
           Center(
             child: ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder:
-                        (context) =>
-                            ProductDetailsScreen(), // Ensure ProductDetailsScreen is defined in detail.dart
-                  ),
-                );
+                // Removed direct link to ProductDetailsScreen
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFFDC5858), // Updated color to #DC5858
