@@ -44,7 +44,6 @@ class LogoutAdminPage extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                // TODO: Tambahkan logika logout di sini
                 Navigator.of(context).pop(); // Tutup dialog
               },
             ),

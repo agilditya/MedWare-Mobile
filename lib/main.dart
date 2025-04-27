@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'Admin/homeAdmin.dart';
-import 'package:tubes/Admin/homeAdmin.dart';
-
 
 void main() {
   runApp(MedWareApp());

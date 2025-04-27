@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
-import 'addproduct.dart';
-import 'medlog.dart';
-import 'profileAdmin.dart';
-import 'viewAllProduct.dart';
+import 'addproduct.dart'; // Ensure AddProductScreen is defined here
+import 'medlog.dart'; // Ensure MedLogPage is defined here
+
+void main() {
+  runApp(MedwareApp());
+}
+
+class MedwareApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MedwareHomeAdminPage(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
 
 class MedwareHomeAdminPage extends StatelessWidget {
   @override
@@ -65,7 +77,7 @@ class MedwareHomeAdminPage extends StatelessWidget {
                 hintText: 'Search',
                 prefixIcon: Icon(Icons.search),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(40),
+                  borderRadius: BorderRadius.circular(25),
                 ),
               ),
             ),
@@ -90,7 +102,9 @@ class MedwareHomeAdminPage extends StatelessWidget {
                             context,
                             PageRouteBuilder(
                               transitionDuration: Duration(milliseconds: 400),
-                              pageBuilder: (_, __, ___) => AddProductScreen(),
+                              pageBuilder:
+                                  (_, __, ___) =>
+                                      AddProductScreen(), // Ensure AddProductScreen is defined
                               transitionsBuilder: (_, animation, __, child) {
                                 return SlideTransition(
                                   position: Tween<Offset>(
@@ -131,7 +145,9 @@ class MedwareHomeAdminPage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => MedLogPage(),
+                              builder:
+                                  (context) =>
+                                      MedLogPage(), // Ensure MedLogPage is defined
                             ),
                           );
                         },
@@ -198,34 +214,6 @@ class MedwareHomeAdminPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _customNavItem('assets/home_navbar.png', 'Home', true),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Viewallproduct()),
-                  );
-                },
-                child: _customNavItem(
-                  'assets/search_navbar.png',
-                  'Search',
-                  false,
-                ),
-              ),
-              SizedBox(width: 40),
-              _customNavItem('assets/log_navbar.png', 'Log', false),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => LogoutStaffPage()),
-                  );
-                },
-                child: _customNavItem(
-                  'assets/profile_navbar.png',
-                  'Profile',
-                  false,
-                ),
-              ),
               _customNavItem('assets/search_navbar.png', 'Search', false),
               SizedBox(width: 40),
               _customNavItem('assets/log_navbar.png', 'Log', false),

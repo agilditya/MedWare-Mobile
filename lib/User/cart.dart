@@ -1,19 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(PaymentApp());
-}
-
-class PaymentApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: PaymentPage(),
-    );
-  }
-}
-
 class PaymentPage extends StatefulWidget {
   @override
   _PaymentPageState createState() => _PaymentPageState();
@@ -25,25 +11,26 @@ class _PaymentPageState extends State<PaymentPage> {
   void _showConfirmDialog() {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: Text('Confirm Payment'),
-        content: Text('Are you sure you want to confirm the payment?'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context), // No
-            child: Text('No'),
+      builder:
+          (context) => AlertDialog(
+            title: Text('Confirm Payment'),
+            content: Text('Are you sure you want to confirm the payment?'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context), // No
+                child: Text('No'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context); // Close the dialog
+                  setState(() {
+                    paymentSuccess = true;
+                  });
+                },
+                child: Text('Yes'),
+              ),
+            ],
           ),
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context); // Close the dialog
-              setState(() {
-                paymentSuccess = true;
-              });
-            },
-            child: Text('Yes'),
-          ),
-        ],
-      ),
     );
   }
 
