@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'homeuser.dart'; // Import halaman Home
 import 'orderpage.dart'; // Import halaman OrderPageScreen
 
-void main() {
-  runApp(PaymentApp());
-}
-
 class PaymentApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

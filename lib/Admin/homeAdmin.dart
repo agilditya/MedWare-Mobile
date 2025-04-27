@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'addproduct.dart';
 import 'medlog.dart';
 import 'ViewProductAdmin.dart';
@@ -84,7 +85,9 @@ class MedwareHomeAdminPage extends StatelessWidget {
                             context,
                             PageRouteBuilder(
                               transitionDuration: Duration(milliseconds: 400),
-                              pageBuilder: (_, __, ___) => AddProductScreen(),
+                              pageBuilder:
+                                  (_, __, ___) =>
+                                      AddProductScreen(), // Ensure AddProductScreen is defined
                               transitionsBuilder: (_, animation, __, child) {
                                 return SlideTransition(
                                   position: Tween<Offset>(
@@ -135,7 +138,9 @@ class MedwareHomeAdminPage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => MedLogPage(),
+                              builder:
+                                  (context) =>
+                                      MedLogPage(), // Ensure MedLogPage is defined
                             ),
                           );
                         },
