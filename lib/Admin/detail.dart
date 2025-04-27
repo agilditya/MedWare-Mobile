@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'viewProductAdmin.dart'; // Pastikan ini sesuai dengan path project kamu
 
 class ProductDetailsScreen extends StatelessWidget {
   const ProductDetailsScreen({super.key});
@@ -7,7 +8,15 @@ class ProductDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.arrow_back, color: Colors.black),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => Viewallproductadmin()),
+            );
+          },
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: const Text(
@@ -49,6 +58,19 @@ class ProductDetailsScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            const SizedBox(height: 8),
+            const Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: 'Category: ',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  TextSpan(text: 'Obat'),
+                ],
+              ),
+              style: TextStyle(fontSize: 14),
+            ),
             const SizedBox(height: 16),
             const Align(
               alignment: Alignment.centerLeft,
@@ -61,7 +83,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     ),
                     TextSpan(
                       text:
-                          'Amoxsan adalah antibiotik yang mengandung Amoxicillin, digunakan untuk mengobati berbagai infeksi bakteri seperti infeksi saluran pernapasan, infeksi saluran kemih, dan infeksi kulit.',
+                          'Amoxsan adalah antibiotik yang mengandung Amoxicillin...',
                     ),
                   ],
                 ),
@@ -96,7 +118,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     ),
                     TextSpan(
                       text:
-                          'Mual, muntah, diare, reaksi alergi seperti ruam, gatal, atau pembengkakan, gangguan pencernaan ringan',
+                          'Mual, muntah, diare, reaksi alergi seperti ruam...',
                     ),
                   ],
                 ),
@@ -202,86 +224,113 @@ class ProductDetailsScreen extends StatelessWidget {
   }
 
   void _showEditStockDialog(BuildContext context) {
-    TextEditingController stockController = TextEditingController();
+    int currentStock = 50;
 
     showDialog(
       context: context,
       builder: (context) {
-        return Dialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text(
-                  'Edit Stock',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 220, 89, 80),
-                  ),
-                ),
-                const SizedBox(height: 12),
-                TextField(
-                  controller: stockController,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    labelText: 'Enter new stock',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return Dialog(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(
-                          255,
-                          199,
-                          103,
-                          96,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                      child: const Text(
-                        'Cancel',
-                        style: TextStyle(color: Colors.white),
+                    const Text(
+                      'Edit Stock',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 220, 89, 80),
                       ),
                     ),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(
-                          255,
-                          199,
-                          103,
-                          96,
+                    const SizedBox(height: 12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            if (currentStock > 0) {
+                              setState(() {
+                                currentStock--;
+                              });
+                            }
+                          },
+                          icon: Icon(Icons.remove, color: Colors.redAccent),
                         ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
+                        Text(
+                          '$currentStock',
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
                         ),
-                      ),
-                      child: const Text(
-                        'Save',
-                        style: TextStyle(color: Colors.white),
-                      ),
+                        IconButton(
+                          onPressed: () {
+                            setState(() {
+                              currentStock++;
+                            });
+                          },
+                          icon: Icon(Icons.add, color: Colors.redAccent),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color.fromARGB(
+                              255,
+                              199,
+                              103,
+                              96,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          child: const Text(
+                            'Cancel',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color.fromARGB(
+                              255,
+                              199,
+                              103,
+                              96,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          child: const Text(
+                            'Save',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         );
       },
     );
@@ -340,7 +389,13 @@ class ProductDetailsScreen extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.of(context).pop();
+                        Navigator.of(context).pop(); // Tutup dialog
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Viewallproductadmin(),
+                          ),
+                        ); // Arahkan ke ViewProductAdmin
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(

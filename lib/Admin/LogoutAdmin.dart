@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tubes/dashboard.dart';
+// ✅ Import halaman tujuan setelah log out
 
 class LogoutAdminPage extends StatelessWidget {
   const LogoutAdminPage({Key? key}) : super(key: key);
@@ -44,8 +46,13 @@ class LogoutAdminPage extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                // TODO: Tambahkan logika logout di sini
                 Navigator.of(context).pop(); // Tutup dialog
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DashboardScreen(),
+                  ), // ✅ Arahkan ke Dashboard
+                );
               },
             ),
           ],
@@ -77,7 +84,7 @@ class LogoutAdminPage extends StatelessWidget {
                 child: Icon(Icons.add, color: Colors.white),
               ),
               _buildNavItem(Icons.inventory_2, "Log", false),
-              _buildNavItem(Icons.person, "Profile", true), // aktifkan profile
+              _buildNavItem(Icons.person, "Profile", true),
             ],
           ),
         ),

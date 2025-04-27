@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
-import 'profileAdmin.dart';
-import 'detail.dart'; // Ensure this import is correct and the file exists
+import 'orderpage.dart'; // Untuk tombol Pay
+import 'profile.dart'; // Untuk Profile
+import 'detail.dart'; // Detail produk
 
-class Viewallproduct extends StatelessWidget {
+class Viewallproductuser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+
       appBar: AppBar(
+        automaticallyImplyLeading: false, // Hapus tombol back
         backgroundColor: Colors.white,
         elevation: 0,
         toolbarHeight: 80,
@@ -29,11 +32,11 @@ class Viewallproduct extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   decoration: BoxDecoration(
-                    color: Color(0xFF525FE1),
+                    color: Color.fromARGB(255, 29, 216, 36),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
-                    'Admin',
+                    'Staff',
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -52,6 +55,7 @@ class Viewallproduct extends StatelessWidget {
           ],
         ),
       ),
+
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
@@ -79,122 +83,78 @@ class Viewallproduct extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            SizedBox(height: 10),
-            Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    padding: EdgeInsets.all(8),
-                    child: productCard(
-                      "Bufect",
-                      "10 - 01 - 2024",
-                      'assets/buffect.png',
-                    ),
-                  ),
-                ),
-                SizedBox(width: 10),
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    padding: EdgeInsets.all(8),
-                    child: productCard(
-                      "Sanmol",
-                      "10 - 01 - 2024",
-                      'assets/sanmol.png',
-                    ),
-                  ),
-                ),
-              ],
+            // Produk Rows
+            _productRow(
+              context,
+              "Bufect",
+              "10 - 01 - 2024",
+              'assets/buffect.png',
+              "Sanmol",
+              "10 - 01 - 2024",
+              'assets/sanmol.png',
             ),
-            SizedBox(height: 10),
-            Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    padding: EdgeInsets.all(8),
-                    child: productCard(
-                      "Panadol",
-                      "10 - 01 - 2026",
-                      'assets/panadol.png',
-                    ),
-                  ),
-                ),
-                SizedBox(width: 10),
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    padding: EdgeInsets.all(8),
-                    child: productCard(
-                      "Amoxsan",
-                      "09 - 07 - 2026",
-                      'assets/amoxsan.png',
-                    ),
-                  ),
-                ),
-              ],
+            _productRow(
+              context,
+              "Panadol",
+              "10 - 01 - 2026",
+              'assets/panadol.png',
+              "Amoxsan",
+              "09 - 07 - 2026",
+              'assets/amoxsan.png',
             ),
-            SizedBox(height: 10),
             Row(
               children: [
                 Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    padding: EdgeInsets.all(8),
-                    child: productCard(
-                      "OBH \nCombi",
-                      "03 - 02 - 2024",
-                      'assets/obhcombi.png',
-                    ),
+                  child: productCard(
+                    "OBH \nCombi",
+                    "03 - 02 - 2024",
+                    'assets/obhcombi.png',
+                    context,
                   ),
                 ),
                 SizedBox(width: 10),
-                Expanded(child: SizedBox()), // Empty space for alignment
+                Expanded(child: SizedBox()), // Kosong
               ],
             ),
           ],
         ),
       ),
-      floatingActionButton: Container(
-        height: 65,
-        width: 65,
-        child: FloatingActionButton(
-          onPressed: () {},
-          backgroundColor: Colors.redAccent,
-          shape: CircleBorder(),
-          child: Image.asset('assets/add_navbar.png', height: 32, width: 32),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
+      // ✅ NAVBAR baru pakai gambar
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
-        shape: CircularNotchedRectangle(),
-        notchMargin: 8.0,
         child: SizedBox(
           height: 70,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _customNavItem('assets/home_navbar.png', 'Home', false),
-              _customNavItem('assets/search_navbar.png', 'Search', true),
-              SizedBox(width: 40),
-              _customNavItem('assets/log_navbar.png', 'Log', false),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: _imageTextNavItem(
+                  'assets/home_navbar.png',
+                  'Home',
+                  false,
+                ),
+              ),
+              GestureDetector(
+                onTap: () {},
+                child: _imageTextNavItem(
+                  'assets/search_navbar.png',
+                  'Search',
+                  true,
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => OrderPageScreen()),
+                  );
+                },
+                child: _imageTextNavItem('assets/pay_navbar.png', 'Pay', false),
+              ),
               GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -202,7 +162,7 @@ class Viewallproduct extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => LogoutStaffPage()),
                   );
                 },
-                child: _customNavItem(
+                child: _imageTextNavItem(
                   'assets/profile_navbar.png',
                   'Profile',
                   false,
@@ -215,47 +175,30 @@ class Viewallproduct extends StatelessWidget {
     );
   }
 
-  Widget dashboardTile(
-    String title,
-    String subtitle,
-    Color color,
-    String imagePath,
+  Widget _productRow(
+    BuildContext context,
+    String name1,
+    String date1,
+    String img1,
+    String name2,
+    String date2,
+    String img2,
   ) {
-    return Container(
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.9),
-        borderRadius: BorderRadius.circular(16),
-      ),
-      padding: EdgeInsets.all(8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Align(
-            alignment: Alignment.topRight,
-            child: Image.asset(
-              imagePath,
-              height: 130,
-              width: 130,
-              fit: BoxFit.contain,
-            ),
-          ),
-          SizedBox(height: 6),
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(height: 6),
-          Text(subtitle, style: TextStyle(fontSize: 12, color: Colors.white)),
-        ],
-      ),
+    return Row(
+      children: [
+        Expanded(child: productCard(name1, date1, img1, context)),
+        SizedBox(width: 10),
+        Expanded(child: productCard(name2, date2, img2, context)),
+      ],
     );
   }
 
-  Widget productCard(String productName, String date, String imagePath) {
+  Widget productCard(
+    String productName,
+    String date,
+    String imagePath,
+    BuildContext context,
+  ) {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
@@ -309,17 +252,19 @@ class Viewallproduct extends StatelessWidget {
           Center(
             child: ElevatedButton(
               onPressed: () {
-                // Removed direct link to ProductDetailsScreen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProductDetailsScreen(),
+                  ),
+                );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFFDC5858), // Updated color to #DC5858
+                backgroundColor: Color(0xFFDC5858),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50),
                 ),
-                padding: EdgeInsets.symmetric(
-                  vertical: 1,
-                  horizontal: 45,
-                ), // Reduced vertical padding
+                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 45),
               ),
               child: Text('Details', style: TextStyle(color: Colors.white)),
             ),
@@ -329,20 +274,18 @@ class Viewallproduct extends StatelessWidget {
     );
   }
 
-  Widget _customNavItem(String assetPath, String label, bool isActive) {
-    double iconHeight = label == 'Log' ? 30 : 24;
-    double iconWidth = label == 'Log' ? 30 : 24;
-
+  Widget _imageTextNavItem(String assetPath, String label, bool isActive) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image.asset(
           assetPath,
-          height: iconHeight,
-          width: iconWidth,
+          height: 24,
+          width: 24,
           color: isActive ? Colors.redAccent : Colors.black,
         ),
+        SizedBox(height: 4),
         Text(
           label,
           style: TextStyle(

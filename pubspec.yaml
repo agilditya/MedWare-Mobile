@@ -84,6 +84,7 @@ flutter:
     - assets/apotik_anugerah.png
     - assets/payment.png
     - assets/logo_apotek.png
+    - assets/pay_navbar.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

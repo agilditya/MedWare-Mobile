@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'homeAdmin.dart';
+import 'ViewProductAdmin.dart';
+import 'profileAdmin.dart';
+import 'addproduct.dart'; // Tambahkan import ini
 
 void main() {
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MedLogPage()));
@@ -39,6 +43,7 @@ class MedLogPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
+        automaticallyImplyLeading: false,
         title: Text(
           'MedLog',
           style: TextStyle(
@@ -50,10 +55,6 @@ class MedLogPage extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon(Icons.search, color: Colors.black),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(Icons.tune, color: Colors.black),
             onPressed: () {},
           ),
         ],
@@ -147,25 +148,22 @@ class MedLogPage extends StatelessWidget {
           );
         },
       ),
-
-      // Floating Action Button (Tengah Bulat)
       floatingActionButton: Container(
         height: 65,
         width: 65,
         child: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AddProductScreen()),
+            );
+          },
           backgroundColor: Colors.redAccent,
           shape: CircleBorder(),
-          child: Image.asset(
-            'assets/add_navbar.png', // Gambar custom tombol tengah
-            height: 32, // Gambar dibesarkan
-            width: 32,
-          ),
+          child: Image.asset('assets/add_navbar.png', height: 32, width: 32),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-
-      // Bottom Navigation Bar
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
         shape: CircularNotchedRectangle(),
@@ -175,11 +173,47 @@ class MedLogPage extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _customNavItem('assets/home_navbar.png', 'Home', false),
-              _customNavItem('assets/search_navbar.png', 'Search', false),
-              SizedBox(width: 40), // Space for FAB
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MedwareHomeAdminPage(),
+                    ),
+                  );
+                },
+                child: _customNavItem('assets/home_navbar.png', 'Home', false),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Viewallproductadmin(),
+                    ),
+                  );
+                },
+                child: _customNavItem(
+                  'assets/search_navbar.png',
+                  'Search',
+                  false,
+                ),
+              ),
+              SizedBox(width: 40),
               _customNavItem('assets/log_navbar.png', 'Log', true),
-              _customNavItem('assets/profile_navbar.png', 'Profile', false),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => LogoutStaffPage()),
+                  );
+                },
+                child: _customNavItem(
+                  'assets/profile_navbar.png',
+                  'Profile',
+                  false,
+                ),
+              ),
             ],
           ),
         ),
@@ -187,9 +221,8 @@ class MedLogPage extends StatelessWidget {
     );
   }
 
-  // Custom Nav Item (Gambar)
   Widget _customNavItem(String assetPath, String label, bool isActive) {
-    double iconHeight = label == 'Log' ? 30 : 24; // Log lebih besar
+    double iconHeight = label == 'Log' ? 30 : 24;
     double iconWidth = label == 'Log' ? 30 : 24;
 
     return Column(

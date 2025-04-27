@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'homeuser.dart'; // Import halaman Home
+import 'orderpage.dart'; // Import halaman OrderPageScreen
 
 void main() {
   runApp(PaymentApp());
@@ -7,10 +9,7 @@ void main() {
 class PaymentApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: PaymentPage(),
-    );
+    return MaterialApp(debugShowCheckedModeBanner: false, home: PaymentPage());
   }
 }
 
@@ -25,25 +24,60 @@ class _PaymentPageState extends State<PaymentPage> {
   void _showConfirmDialog() {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: Text('Confirm Payment'),
-        content: Text('Are you sure you want to confirm the payment?'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context), // No
-            child: Text('No'),
+      builder:
+          (context) => AlertDialog(
+            title: Text('Confirm Payment'),
+            content: Text('Are you sure you want to confirm the payment?'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context), // No
+                child: Text('No'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context); // Close the dialog
+                  setState(() {
+                    paymentSuccess = true;
+                  });
+
+                  // Menunggu 2 detik sebelum menampilkan dialog untuk kembali ke Home
+                  Future.delayed(Duration(seconds: 2), () {
+                    _showHomeRedirectDialog();
+                  });
+                },
+                child: Text('Yes'),
+              ),
+            ],
           ),
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context); // Close the dialog
-              setState(() {
-                paymentSuccess = true;
-              });
-            },
-            child: Text('Yes'),
+    );
+  }
+
+  void _showHomeRedirectDialog() {
+    showDialog(
+      context: context,
+      builder:
+          (context) => AlertDialog(
+            title: Text('Payment Successful'),
+            content: Text('Do you want to go back to the Home page?'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context), // Tetap di halaman ini
+                child: Text('No'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context); // Menutup dialog
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MedwareHomeUserPage(),
+                    ),
+                  );
+                },
+                child: Text('Yes'),
+              ),
+            ],
           ),
-        ],
-      ),
     );
   }
 
@@ -95,6 +129,29 @@ class _PaymentPageState extends State<PaymentPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        toolbarHeight: 60,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => OrderPageScreen()),
+            );
+          },
+        ),
+        title: Text(
+          'Payment',
+          style: TextStyle(
+            color: Colors.redAccent,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+        ),
+        centerTitle: true,
+      ),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16, vertical: 24),
@@ -117,13 +174,19 @@ class _PaymentPageState extends State<PaymentPage> {
               Spacer(),
               if (paymentSuccess)
                 Center(
-                  child: Text(
-                    'Payment Berhasil!',
-                    style: TextStyle(
-                      color: Colors.green,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
+                  child: Column(
+                    children: [
+                      CircularProgressIndicator(), // Loading spinner
+                      SizedBox(height: 16),
+                      Text(
+                        'Payment Berhasil!',
+                        style: TextStyle(
+                          color: Colors.green,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               SizedBox(height: 16),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'homeUser.dart'; // ✅ Import halaman tujuan setelah logout
 
 class LogoutStaffPage extends StatelessWidget {
   const LogoutStaffPage({Key? key}) : super(key: key);
@@ -44,8 +45,13 @@ class LogoutStaffPage extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                // TODO: Tambahkan logika logout di sini
                 Navigator.of(context).pop(); // Tutup dialog
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MedwareHomeUserPage(),
+                  ), // ✅ Arahkan ke HomeUserPage
+                );
               },
             ),
           ],

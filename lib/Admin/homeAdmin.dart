@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'addproduct.dart';
 import 'medlog.dart';
+import 'ViewProductAdmin.dart';
 import 'profileAdmin.dart';
-import 'viewAllProduct.dart';
 
 class MedwareHomeAdminPage extends StatelessWidget {
   @override
@@ -10,7 +10,9 @@ class MedwareHomeAdminPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
 
+      // ✅ AppBar sudah disesuaikan
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         elevation: 0,
         toolbarHeight: 80,
@@ -32,7 +34,7 @@ class MedwareHomeAdminPage extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   decoration: BoxDecoration(
-                    color: Colors.blueAccent,
+                    color: Color(0xFF525FE1),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
@@ -50,7 +52,7 @@ class MedwareHomeAdminPage extends StatelessWidget {
             CircleAvatar(
               radius: 25,
               backgroundColor: Colors.orange,
-              backgroundImage: AssetImage('assets/logo_apotek.png'),
+              backgroundImage: AssetImage('assets/apotik_anugerah.png'),
             ),
           ],
         ),
@@ -60,15 +62,7 @@ class MedwareHomeAdminPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'Search',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(40),
-                ),
-              ),
-            ),
+            // Bagian Search DIHAPUS
             SizedBox(height: 16),
             Column(
               children: [
@@ -117,11 +111,21 @@ class MedwareHomeAdminPage extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(
-                      child: dashboardTile(
-                        "VIEW",
-                        "View all products",
-                        Colors.purple,
-                        'assets/view.png',
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Viewallproductadmin(),
+                            ),
+                          );
+                        },
+                        child: dashboardTile(
+                          "VIEW",
+                          "View all products",
+                          Colors.purple,
+                          'assets/view.png',
+                        ),
                       ),
                     ),
                     SizedBox(width: 10),
@@ -180,7 +184,24 @@ class MedwareHomeAdminPage extends StatelessWidget {
         height: 65,
         width: 65,
         child: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              PageRouteBuilder(
+                transitionDuration: Duration(milliseconds: 400),
+                pageBuilder: (_, __, ___) => AddProductScreen(),
+                transitionsBuilder: (_, animation, __, child) {
+                  return SlideTransition(
+                    position: Tween<Offset>(
+                      begin: Offset(0, 1),
+                      end: Offset.zero,
+                    ).animate(animation),
+                    child: child,
+                  );
+                },
+              ),
+            );
+          },
           backgroundColor: Colors.redAccent,
           shape: CircleBorder(),
           child: Image.asset('assets/add_navbar.png', height: 32, width: 32),
@@ -202,7 +223,9 @@ class MedwareHomeAdminPage extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Viewallproduct()),
+                    MaterialPageRoute(
+                      builder: (context) => Viewallproductadmin(),
+                    ),
                   );
                 },
                 child: _customNavItem(
@@ -212,7 +235,15 @@ class MedwareHomeAdminPage extends StatelessWidget {
                 ),
               ),
               SizedBox(width: 40),
-              _customNavItem('assets/log_navbar.png', 'Log', false),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MedLogPage()),
+                  );
+                },
+                child: _customNavItem('assets/log_navbar.png', 'Log', false),
+              ),
               GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -226,10 +257,6 @@ class MedwareHomeAdminPage extends StatelessWidget {
                   false,
                 ),
               ),
-              _customNavItem('assets/search_navbar.png', 'Search', false),
-              SizedBox(width: 40),
-              _customNavItem('assets/log_navbar.png', 'Log', false),
-              _customNavItem('assets/profile_navbar.png', 'Profile', false),
             ],
           ),
         ),
@@ -248,7 +275,7 @@ class MedwareHomeAdminPage extends StatelessWidget {
         color: color.withOpacity(0.9),
         borderRadius: BorderRadius.circular(16),
       ),
-      padding: EdgeInsets.all(8), // ✅ Kotaknya dikecilkan
+      padding: EdgeInsets.all(8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -256,7 +283,7 @@ class MedwareHomeAdminPage extends StatelessWidget {
             alignment: Alignment.topRight,
             child: Image.asset(
               imagePath,
-              height: 130, // ✅ Gambar tetap
+              height: 130,
               width: 130,
               fit: BoxFit.contain,
             ),

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'orderpage.dart'; // KE ORDERPAGE
+import 'ViewProductUser.dart'; // Halaman produk user
+import 'profile.dart'; // Halaman profil user
+
 class MedwareHomeUserPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -7,42 +11,47 @@ class MedwareHomeUserPage extends StatelessWidget {
       backgroundColor: Colors.white,
 
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         elevation: 0,
         toolbarHeight: 80,
-        automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Text(
-              'ApotekSejahtera21',
-              style: TextStyle(
-                color: Colors.redAccent,
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-            SizedBox(width: 8),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-              decoration: BoxDecoration(
-                color: Colors.green,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Text(
-                'Staff',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 12,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  'ApotekSejahtera21',
+                  style: TextStyle(
+                    color: Colors.redAccent,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
                 ),
-              ),
+                SizedBox(height: 4),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 29, 216, 36),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Text(
+                    'Staff',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+              ],
             ),
             SizedBox(width: 8),
             CircleAvatar(
-              radius: 20,
+              radius: 25,
               backgroundColor: Colors.orange,
-              backgroundImage: AssetImage('assets/logo_apotek.png'),
+              backgroundImage: AssetImage('assets/apotik_anugerah.png'),
             ),
           ],
         ),
@@ -81,17 +90,32 @@ class MedwareHomeUserPage extends StatelessWidget {
                         "View all products",
                         Colors.purple,
                         'assets/view.png',
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Viewallproductuser(),
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ],
                 ),
                 SizedBox(height: 10),
-                // Tile PAY sendiri
                 dashboardTile(
                   "PAY",
                   "Payment for customers",
                   Colors.green,
-                  'assets/pay.png',
+                  'assets/payment.png',
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => OrderPageScreen(),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
@@ -124,32 +148,59 @@ class MedwareHomeUserPage extends StatelessWidget {
         ),
       ),
 
-      floatingActionButton: Container(
-        height: 65,
-        width: 65,
-        child: FloatingActionButton(
-          onPressed: () {},
-          backgroundColor: Colors.redAccent,
-          shape: CircleBorder(),
-          child: Image.asset('assets/add_navbar.png', height: 32, width: 32),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-
+      // ✅ NAVBAR
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
-        shape: CircularNotchedRectangle(),
-        notchMargin: 8.0,
         child: SizedBox(
           height: 70,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _customNavItem('assets/home_navbar.png', 'Home', true),
-              _customNavItem('assets/search_navbar.png', 'Search', false),
-              SizedBox(width: 40),
-              _customNavItem('assets/log_navbar.png', 'Log', false),
-              _customNavItem('assets/profile_navbar.png', 'Profile', false),
+              GestureDetector(
+                onTap: () {},
+                child: _imageTextNavItem(
+                  'assets/home_navbar.png',
+                  'Home',
+                  true,
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Viewallproductuser(),
+                    ),
+                  );
+                },
+                child: _imageTextNavItem(
+                  'assets/search_navbar.png',
+                  'Search',
+                  false,
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => OrderPageScreen()),
+                  );
+                },
+                child: _imageTextNavItem('assets/pay_navbar.png', 'Pay', false),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LogoutStaffPage()),
+                  );
+                },
+                child: _imageTextNavItem(
+                  'assets/profile_navbar.png',
+                  'Profile',
+                  false,
+                ),
+              ),
             ],
           ),
         ),
@@ -161,39 +212,43 @@ class MedwareHomeUserPage extends StatelessWidget {
     String title,
     String subtitle,
     Color color,
-    String imagePath,
-  ) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 10), // Jarak antar tile
-      decoration: BoxDecoration(
-        color: color.withOpacity(0.9),
-        borderRadius: BorderRadius.circular(16),
-      ),
-      padding: EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Align(
-            alignment: Alignment.topRight,
-            child: Image.asset(
-              imagePath,
-              height: 130,
-              width: 130,
-              fit: BoxFit.contain,
+    String imagePath, {
+    VoidCallback? onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: EdgeInsets.only(bottom: 10),
+        decoration: BoxDecoration(
+          color: color.withOpacity(0.9),
+          borderRadius: BorderRadius.circular(16),
+        ),
+        padding: EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Align(
+              alignment: Alignment.topRight,
+              child: Image.asset(
+                imagePath,
+                height: 130,
+                width: 130,
+                fit: BoxFit.contain,
+              ),
             ),
-          ),
-          SizedBox(height: 8),
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 24,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
+            SizedBox(height: 8),
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 24,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          SizedBox(height: 8),
-          Text(subtitle, style: TextStyle(fontSize: 14, color: Colors.white)),
-        ],
+            SizedBox(height: 8),
+            Text(subtitle, style: TextStyle(fontSize: 14, color: Colors.white)),
+          ],
+        ),
       ),
     );
   }
@@ -226,20 +281,18 @@ class MedwareHomeUserPage extends StatelessWidget {
     );
   }
 
-  Widget _customNavItem(String assetPath, String label, bool isActive) {
-    double iconHeight = label == 'Log' ? 30 : 24;
-    double iconWidth = label == 'Log' ? 30 : 24;
-
+  Widget _imageTextNavItem(String assetPath, String label, bool isActive) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image.asset(
           assetPath,
-          height: iconHeight,
-          width: iconWidth,
+          height: 24,
+          width: 24,
           color: isActive ? Colors.redAccent : Colors.black,
         ),
+        SizedBox(height: 4),
         Text(
           label,
           style: TextStyle(

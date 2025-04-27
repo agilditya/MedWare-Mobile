@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'ViewProductAdmin.dart';
 
 class AddProductScreen extends StatefulWidget {
   const AddProductScreen({super.key});
@@ -10,6 +11,8 @@ class AddProductScreen extends StatefulWidget {
 class _AddProductScreenState extends State<AddProductScreen> {
   final _formKey = GlobalKey<FormState>();
   final Map<String, TextEditingController> _controllers = {};
+  int _stockValue = 0;
+  DateTime? _selectedDate;
 
   void _showSuccessDialog(BuildContext context) {
     showDialog(
@@ -23,7 +26,13 @@ class _AddProductScreenState extends State<AddProductScreen> {
             content: const Text('Product has been successfully saved.'),
             actions: [
               TextButton(
-                onPressed: () => Navigator.of(context).pop(),
+                onPressed: () {
+                  Navigator.of(context).pop(); // Tutup dialog
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (_) => Viewallproductadmin()),
+                  ); // Navigasi ke halaman ViewProductAdmin
+                },
                 child: const Text(
                   'OK',
                   style: TextStyle(color: Colors.redAccent),
@@ -40,6 +49,22 @@ class _AddProductScreenState extends State<AddProductScreen> {
     }
   }
 
+  Future<void> _pickDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: _selectedDate ?? DateTime.now(),
+      firstDate: DateTime(2020),
+      lastDate: DateTime(2101),
+    );
+    if (picked != null && picked != _selectedDate) {
+      setState(() {
+        _selectedDate = picked;
+        _controllers['Expired *']?.text =
+            "${picked.year}-${picked.month.toString().padLeft(2, '0')}-${picked.day.toString().padLeft(2, '0')}";
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +73,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
-            Navigator.pop(context); // Kembali ke halaman sebelumnya (home page)
+            Navigator.pop(context); // Kembali ke halaman sebelumnya
           },
         ),
         backgroundColor: Colors.transparent,
@@ -97,11 +122,43 @@ class _AddProductScreenState extends State<AddProductScreen> {
               ),
               _InputField(label: 'Composition', controllerMap: _controllers),
               _InputField(label: 'Side Effects', controllerMap: _controllers),
-              _InputField(
-                label: 'Stock Product *',
-                isRequired: true,
-                controllerMap: _controllers,
+
+              // STOCK - dengan tombol + dan -
+              Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Stock Product *',
+                        style: TextStyle(
+                          color: Colors.black54,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        setState(() {
+                          if (_stockValue > 0) _stockValue--;
+                        });
+                      },
+                      icon: Icon(Icons.remove, color: Colors.redAccent),
+                    ),
+                    Text('$_stockValue', style: TextStyle(fontSize: 16)),
+                    IconButton(
+                      onPressed: () {
+                        setState(() {
+                          _stockValue++;
+                        });
+                      },
+                      icon: Icon(Icons.add, color: Colors.redAccent),
+                    ),
+                  ],
+                ),
               ),
+
               _InputField(
                 label: 'Price *',
                 isRequired: true,
@@ -118,11 +175,19 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 isRequired: true,
                 controllerMap: _controllers,
               ),
-              _InputField(
-                label: 'Expired *',
-                isRequired: true,
-                controllerMap: _controllers,
+
+              // EXPIRED - Date Picker
+              GestureDetector(
+                onTap: () => _pickDate(context),
+                child: AbsorbPointer(
+                  child: _InputField(
+                    label: 'Expired *',
+                    isRequired: true,
+                    controllerMap: _controllers,
+                  ),
+                ),
               ),
+
               _InputField(
                 label: 'Category *',
                 isRequired: true,

@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:tubes/dashboard.dart';
+import 'orderpage.dart'; // Halaman Pay
+import 'ViewProductUser.dart'; // Halaman Search
+import 'homeUser.dart'; // Halaman Home
+import 'editprofileUser.dart'; // Import halaman Edit Profile User
+import 'package:tubes/User/changepasswordUser.dart'; // Import halaman Change Password User
 
 class LogoutStaffPage extends StatelessWidget {
   const LogoutStaffPage({Key? key}) : super(key: key);
@@ -45,6 +51,12 @@ class LogoutStaffPage extends StatelessWidget {
               ),
               onPressed: () {
                 Navigator.of(context).pop(); // Tutup dialog
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DashboardScreen(),
+                  ), // Navigasi ke Dashboard
+                );
               },
             ),
           ],
@@ -56,31 +68,6 @@ class LogoutStaffPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomAppBar(
-        child: SizedBox(
-          height: 70,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              _buildNavItem(Icons.home, "Home", false),
-              _buildNavItem(Icons.search, "Search", false),
-              ElevatedButton(
-                onPressed: () {
-                  // Tambah aksi
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: CircleBorder(),
-                  padding: EdgeInsets.all(12),
-                  backgroundColor: Colors.redAccent,
-                ),
-                child: Icon(Icons.add, color: Colors.white),
-              ),
-              _buildNavItem(Icons.inventory_2, "Log", false),
-              _buildNavItem(Icons.person, "Profile", true), // aktifkan profile
-            ],
-          ),
-        ),
-      ),
       body: Column(
         children: [
           Container(
@@ -109,7 +96,7 @@ class LogoutStaffPage extends StatelessWidget {
                     vertical: 6,
                   ),
                   decoration: BoxDecoration(
-                    color: Color(0xFF53BF63), // Corrected color value
+                    color: Color(0xFF53BF63),
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: const Text(
@@ -147,7 +134,12 @@ class LogoutStaffPage extends StatelessWidget {
                   title: const Text("My Profile"),
                   trailing: const Icon(Icons.arrow_forward_ios),
                   onTap: () {
-                    // Aksi ke halaman profil
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EditProfileUser(),
+                      ),
+                    );
                   },
                 ),
                 const Divider(height: 1),
@@ -155,7 +147,12 @@ class LogoutStaffPage extends StatelessWidget {
                   title: const Text("Change Password"),
                   trailing: const Icon(Icons.arrow_forward_ios),
                   onTap: () {
-                    // Aksi ke halaman ubah password
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ChangePasswordScreen(),
+                      ),
+                    );
                   },
                 ),
               ],
@@ -174,7 +171,7 @@ class LogoutStaffPage extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  side: BorderSide(color: Colors.red, width: 1), // Added border
+                  side: BorderSide(color: Colors.red, width: 1),
                   shadowColor: Colors.white.withOpacity(0.1),
                   elevation: 4,
                 ),
@@ -183,7 +180,7 @@ class LogoutStaffPage extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
-                    fontWeight: FontWeight.bold, // Made text bold
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -191,15 +188,81 @@ class LogoutStaffPage extends StatelessWidget {
           ),
         ],
       ),
+
+      // ✅ NAVBAR DENGAN AKSI
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
+        child: SizedBox(
+          height: 70,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MedwareHomeUserPage(),
+                    ),
+                  );
+                },
+                child: _imageTextNavItem(
+                  'assets/home_navbar.png',
+                  'Home',
+                  false,
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Viewallproductuser(),
+                    ),
+                  );
+                },
+                child: _imageTextNavItem(
+                  'assets/search_navbar.png',
+                  'Search',
+                  false,
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => OrderPageScreen()),
+                  );
+                },
+                child: _imageTextNavItem('assets/pay_navbar.png', 'Pay', false),
+              ),
+              GestureDetector(
+                onTap: () {},
+                child: _imageTextNavItem(
+                  'assets/profile_navbar.png',
+                  'Profile',
+                  true,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
-  Widget _buildNavItem(IconData icon, String label, bool isActive) {
+  Widget _imageTextNavItem(String assetPath, String label, bool isActive) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(icon, color: isActive ? Colors.redAccent : Colors.black),
+        Image.asset(
+          assetPath,
+          height: 24,
+          width: 24,
+          color: isActive ? Colors.redAccent : Colors.black,
+        ),
+        SizedBox(height: 4),
         Text(
           label,
           style: TextStyle(
